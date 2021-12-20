@@ -54,6 +54,12 @@ extension UIView: Objectified {
         return self
     }
     
+    public func bordered(width: CGFloat, color: UIColor) -> UIView {
+        layer.borderColor = color.cgColor
+        layer.borderWidth = width
+        return self
+    }
+    
     public func addTarget(_ target: Any, action: Selector) {
         if self is UIButton {
             (self as! UIButton).addTarget(target, action: action, for: .touchUpInside)

@@ -16,6 +16,7 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     func hidden() -> UIView
     func showing() -> UIView
     func rounded(_ radius: CGFloat) -> UIView
+    func bordered(width: CGFloat, color: UIColor) -> UIView
     
     func center(in view: UIView) -> UIView
     func fill(in view: UIView,
