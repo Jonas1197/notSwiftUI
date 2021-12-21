@@ -8,4 +8,6 @@ NotSwiftUI is designed to help you create UI components quickly and efficiently 
  
  All that is done in a SwiftUI-ish way, which will definitely reduce the number of lines of code you write, as well as help you achieve a more readable and better looking code!
  
+ ![alt text](https://github.com/Jonas1197/notSwiftUI/blob/main/Sources/Images/2.png)
+ 
 Spread the word!
