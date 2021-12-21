@@ -24,7 +24,7 @@ public enum Object {
     case switchElement(target: Any, action: Selector)
     case hstack(arrangedSubviews: [UIView], spacing: CGFloat, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution)
     case vstack(arrangedSubviews: [UIView], spacing: CGFloat, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution)
-    case imageViewWithImage(image: UIImage, contentMode: UIImageView.ContentMode, backgroundColor: UIColor = .clear)
+    case imageViewWithImage(image: UIImage?, contentMode: UIImageView.ContentMode, backgroundColor: UIColor = .clear)
     case imageViewWithSFSymbol(symbolName: String, pointSize: CGFloat, contentMode: UIImageView.ContentMode, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor)
     
     //MARK: - Shape
