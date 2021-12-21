@@ -10,4 +10,10 @@ NotSwiftUI is designed to help you create UI components quickly and efficiently 
  
  ![alt text](https://github.com/Jonas1197/notSwiftUI/blob/main/Sources/Images/2.png)
  
+ 
+ <ins>Stacking views</ins>
+ With the vstackeded and hstacked methods you can easily group arrays of UIViews together and stack them up in a UIStackView!
+ 
+ ![alt text](https://github.com/Jonas1197/notSwiftUI/blob/main/Sources/Images/3.png)
+ 
 Spread the word!
