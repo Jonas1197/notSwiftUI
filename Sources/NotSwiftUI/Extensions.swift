@@ -10,7 +10,7 @@ import UIKit
 
 //MARK: - Objectified methods
 extension UIView: Objectified {
-    public func shadowed(with color: UIColor, _ offset: CGSize, radius: CGFloat, _ opacity: Float) -> UIView {
+    public func shadowed(with color: UIColor, offset: CGSize, radius: CGFloat, _ opacity: Float) -> UIView {
         (self as UIView).layer.shadowColor   = color.cgColor
         (self as UIView).layer.shadowOffset  = offset
         (self as UIView).layer.shadowRadius  = radius
@@ -60,6 +60,13 @@ extension UIView: Objectified {
         return self
     }
     
+    public func padding(_ value: CGFloat) -> UIView {
+        guard let superview = superview else { return self }
+        
+        
+        return self
+    }
+    
     public func addTarget(_ target: Any, action: Selector) {
         if self is UIButton {
             (self as! UIButton).addTarget(target, action: action, for: .touchUpInside)
@@ -72,7 +79,7 @@ extension UIView: Objectified {
 
 //MARK: - Fixing views
 extension UIView {
-    public func center(in view: UIView) -> UIView {
+    public func centered(in view: UIView) -> UIView {
         view.addSubview(self)
         NSLayoutConstraint.activate([
             self.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -82,7 +89,7 @@ extension UIView {
         return self
     }
     
-    public func fill(in view: UIView,
+    public func filled(in view: UIView,
                      leadingPadding:  CGFloat = 0,
                      trailingPadding: CGFloat = 0,
                      topPadding:      CGFloat = 0,

@@ -8,7 +8,7 @@
 import UIKit
 
 public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceContainer, UIDynamicItem, UITraitEnvironment, UICoordinateSpace, UIFocusItem, UIFocusItemContainer, CALayerDelegate {
-    func shadowed(with color: UIColor, _ offset: CGSize, radius: CGFloat, _ opacity: Float) -> UIView
+    func shadowed(with color: UIColor, offset: CGSize, radius: CGFloat, _ opacity: Float) -> UIView
     func translucent(_ opacity: Float) -> UIView
     func invisible() -> UIView
     func backgroundColored(_ color: UIColor) -> UIView
@@ -18,8 +18,8 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     func rounded(_ radius: CGFloat) -> UIView
     func bordered(width: CGFloat, color: UIColor) -> UIView
     
-    func center(in view: UIView) -> UIView
-    func fill(in view: UIView,
+    func centered(in view: UIView) -> UIView
+    func filled(in view: UIView,
                      leadingPadding:  CGFloat,
                      trailingPadding: CGFloat,
                      topPadding:      CGFloat,

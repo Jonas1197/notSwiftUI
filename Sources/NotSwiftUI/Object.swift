@@ -7,6 +7,11 @@
 
 import UIKit
 
+public enum FixState {
+    case filled
+    case centered
+    case notFixed
+}
 
 public enum Object {
     
@@ -18,7 +23,8 @@ public enum Object {
     case switchElement(target: Any, action: Selector)
     case hstack(arrangedSubviews: [UIView], spacing: CGFloat, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution)
     case vstack(arrangedSubviews: [UIView], spacing: CGFloat, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution)
-    
+    case imageViewWithImage(image: UIImage, contentMode: UIImageView.ContentMode, backgroundColor: UIColor = .clear)
+    case imageViewWithSFSymbol(symbolName: String, pointSize: CGFloat, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor)
     
     //MARK: - Shape
     case square(color: UIColor = .black, width: Double, height: Double)
@@ -119,6 +125,22 @@ public enum Object {
             view.backgroundColor = color
             view.translatesAutoresizingMaskIntoConstraints = false
             return view.rounded(size / 2)
+            
+        case .imageViewWithImage(let image, let contentMode, let backgroundColor):
+            let imageView             = UIImageView(image: image)
+            imageView.contentMode     = contentMode
+            imageView.backgroundColor = backgroundColor
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            return imageView
+            
+        case .imageViewWithSFSymbol(let symbolName, let pointSize, let weight, let scale, let tintColor):
+            let imageView       = UIImageView()
+            let configuration   = UIImage.SymbolConfiguration(pointSize: pointSize, weight: weight, scale: scale)
+            let image           = UIImage(systemName: symbolName, withConfiguration: configuration)
+            imageView.image     = image
+            imageView.tintColor = tintColor
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            return imageView
         }
     }
 }

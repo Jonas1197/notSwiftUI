@@ -1,11 +1,11 @@
 import XCTest
-@testable import SudoD
+@testable import NotSwiftUI
 
-final class SudoDTests: XCTestCase {
+final class NotSwiftUITests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(SudoD().text, "Hello, World!")
+//        XCTAssertEqual(NotSwiftUI.text, "Hello, World!")
     }
 }
