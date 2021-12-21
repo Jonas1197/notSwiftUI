@@ -25,7 +25,7 @@ public enum Object {
     case hstack(arrangedSubviews: [UIView], spacing: CGFloat, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution)
     case vstack(arrangedSubviews: [UIView], spacing: CGFloat, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution)
     case imageViewWithImage(image: UIImage, contentMode: UIImageView.ContentMode, backgroundColor: UIColor = .clear)
-    case imageViewWithSFSymbol(symbolName: String, pointSize: CGFloat, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor)
+    case imageViewWithSFSymbol(symbolName: String, pointSize: CGFloat, contentMode: UIImageView.ContentMode, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor)
     
     //MARK: - Shape
     case square(color: UIColor = .black, width: Double, height: Double)
@@ -140,12 +140,13 @@ public enum Object {
             imageView.translatesAutoresizingMaskIntoConstraints = false
             return imageView
             
-        case .imageViewWithSFSymbol(let symbolName, let pointSize, let weight, let scale, let tintColor):
-            let imageView       = UIImageView()
-            let configuration   = UIImage.SymbolConfiguration(pointSize: pointSize, weight: weight, scale: scale)
-            let image           = UIImage(systemName: symbolName, withConfiguration: configuration)
-            imageView.image     = image
-            imageView.tintColor = tintColor
+        case .imageViewWithSFSymbol(let symbolName, let pointSize, let contentMode, let weight, let scale, let tintColor):
+            let imageView         = UIImageView()
+            let configuration     = UIImage.SymbolConfiguration(pointSize: pointSize, weight: weight, scale: scale)
+            let image             = UIImage(systemName: symbolName, withConfiguration: configuration)
+            imageView.image       = image
+            imageView.tintColor   = tintColor
+            imageView.contentMode = contentMode
             imageView.translatesAutoresizingMaskIntoConstraints = false
             return imageView
         }

@@ -60,12 +60,13 @@ extension UIView: Objectified {
         return self
     }
     
-    public func setSymbol(symbolName: String, pointSize: CGFloat, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor) -> UIView {
+    public func setSymbol(symbolName: String, pointSize: CGFloat, contentMode: UIImageView.ContentMode, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor) -> UIView {
         
-        let configuration                = UIImage.SymbolConfiguration(pointSize: pointSize, weight: weight, scale: scale)
-        let image                        = UIImage(systemName: symbolName, withConfiguration: configuration)
-        (self as! UIImageView).image     = image
-        (self as! UIImageView).tintColor = tintColor
+        let configuration                  = UIImage.SymbolConfiguration(pointSize: pointSize, weight: weight, scale: scale)
+        let image                          = UIImage(systemName: symbolName, withConfiguration: configuration)
+        (self as! UIImageView).image       = image
+        (self as! UIImageView).tintColor   = tintColor
+        (self as! UIImageView).contentMode = contentMode
         
         return self
     }
