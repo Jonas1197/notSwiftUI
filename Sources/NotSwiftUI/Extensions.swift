@@ -110,3 +110,14 @@ extension UIView {
         return self
     }
 }
+
+
+extension Array where Element == UIView {
+    public func vstacked(spacing: CGFloat, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution) -> UIView {
+        return Object.vstack(arrangedSubviews: self, spacing: spacing, alignment: alignment, distribution: distribution).create()
+    }
+    
+    public func hstacked(spacing: CGFloat, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution) -> UIView {
+        return Object.hstack(arrangedSubviews: self, spacing: spacing, alignment: alignment, distribution: distribution).create()
+    }
+}
