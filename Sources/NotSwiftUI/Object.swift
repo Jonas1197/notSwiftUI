@@ -16,6 +16,7 @@ public enum FixState {
 public enum Object {
     
     //MARK: - UIKit
+    case view(backgroundColor: UIColor = .black)
     case label(text: String, backgroundColor: UIColor, textColor: UIColor)
     case button(text: String = "", backgroundColor: UIColor, tintColor: UIColor)
     case buttonWithImage(image: UIImage?, text: String = "", backgroundColor: UIColor, tintColor: UIColor)
@@ -35,6 +36,12 @@ public enum Object {
             
             
         //MARK: - UIKit
+        case .view(let backgroundColor):
+            let view = UIView()
+            view.backgroundColor = backgroundColor
+            view.translatesAutoresizingMaskIntoConstraints = false
+            return view
+            
         case .label(let text, let backgroundColor, let textColor):
             let label             = UILabel()
             label.text            = text
