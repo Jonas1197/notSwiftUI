@@ -60,9 +60,11 @@ extension UIView: Objectified {
         return self
     }
     
-    public func padding(_ value: CGFloat) -> UIView {
-        guard let superview = superview else { return self }
+    public func setSymbol(symbolName: String, pointSize: CGFloat, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale) -> UIView {
         
+        let configuration      = UIImage.SymbolConfiguration(pointSize: pointSize, weight: weight, scale: scale)
+        let image              = UIImage(systemName: symbolName, withConfiguration: configuration)
+        (self as! UIImageView).image = image
         
         return self
     }

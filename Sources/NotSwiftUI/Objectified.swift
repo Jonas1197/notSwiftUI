@@ -17,6 +17,7 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     func showing() -> UIView
     func rounded(_ radius: CGFloat) -> UIView
     func bordered(width: CGFloat, color: UIColor) -> UIView
+    func setSymbol(symbolName: String, pointSize: CGFloat, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale) -> UIView
     
     func centered(in view: UIView) -> UIView
     func filled(in view: UIView,
