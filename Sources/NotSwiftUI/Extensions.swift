@@ -61,12 +61,24 @@ extension UIView: Objectified {
     }
     
     public func setSymbol(symbolName: String, pointSize: CGFloat, contentMode: UIImageView.ContentMode, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor) -> UIView {
+        if let _ = self as? UIImageView {
+            let configuration                  = UIImage.SymbolConfiguration(pointSize: pointSize, weight: weight, scale: scale)
+            let image                          = UIImage(systemName: symbolName, withConfiguration: configuration)
+            (self as! UIImageView).image       = image
+            (self as! UIImageView).tintColor   = tintColor
+            (self as! UIImageView).contentMode = contentMode
+        }
         
-        let configuration                  = UIImage.SymbolConfiguration(pointSize: pointSize, weight: weight, scale: scale)
-        let image                          = UIImage(systemName: symbolName, withConfiguration: configuration)
-        (self as! UIImageView).image       = image
-        (self as! UIImageView).tintColor   = tintColor
-        (self as! UIImageView).contentMode = contentMode
+        return self
+    }
+    
+    public func setImage(imageName: String) -> UIView {
+        if let _ = self as? UIImageView {
+            (self as! UIImageView).image = .init(named: imageName)
+            
+        } else if let _ = self as? UIButton {
+            (self as! UIButton).setImage(.init(named: imageName), for: .normal)
+        }
         
         return self
     }
@@ -151,6 +163,7 @@ extension UIView {
         
         return self
     }
+    
  }
 
 
