@@ -17,7 +17,7 @@ public enum Object {
     
     //MARK: - UIKit
     case view(backgroundColor: UIColor = .black)
-    case label(text: String, backgroundColor: UIColor, textColor: UIColor)
+    case label(text: String, textAlignment: NSTextAlignment, backgroundColor: UIColor, textColor: UIColor)
     case button(text: String = "", backgroundColor: UIColor, tintColor: UIColor)
     case buttonWithImage(image: UIImage?, text: String = "", backgroundColor: UIColor, tintColor: UIColor)
     case buttonWithSymbol(title: String = "", symbolName: String, pointSize: CGFloat, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor = .white, backgroundColor: UIColor = .clear)
@@ -42,11 +42,12 @@ public enum Object {
             view.translatesAutoresizingMaskIntoConstraints = false
             return view
             
-        case .label(let text, let backgroundColor, let textColor):
+        case .label(let text, let textAlignment, let backgroundColor, let textColor):
             let label             = UILabel()
             label.text            = text
             label.backgroundColor = backgroundColor
             label.textColor       = textColor
+            label.textAlignment   = textAlignment
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
             
