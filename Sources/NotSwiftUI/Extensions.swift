@@ -85,6 +85,20 @@ extension UIView: Objectified {
         return self
     }
     
+    public func setText(_ text: String) -> UIView {
+        if let label = self as? UILabel {
+            label.text = text
+            
+        } else if let textView = self as? UITextView {
+            textView.text = text
+            
+        } else if let textField = self as? UITextField {
+            textField.text = text
+        }
+        
+        return self
+    }
+    
     
     
     public func addTarget(_ target: Any, action: Selector) {
