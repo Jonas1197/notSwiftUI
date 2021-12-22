@@ -109,7 +109,19 @@ extension UIView {
         
         return self
     }
-}
+    
+    public func filled(in view: UIView, bellow topView: UIView, withPadding padding: CGFloat) -> UIView {
+        view.addSubview(self)
+        NSLayoutConstraint.activate([
+            self.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            self.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            self.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: padding),
+            self.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        return self
+    }
+ }
 
 
 extension Array where Element == UIView {
