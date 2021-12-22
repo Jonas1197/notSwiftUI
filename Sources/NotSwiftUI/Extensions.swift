@@ -110,7 +110,7 @@ extension UIView {
         return self
     }
     
-    public func filled(in view: UIView, bellow topView: UIView, withPadding padding: CGFloat) -> UIView {
+    public func filled(in view: UIView, bellow topView: UIView, withPadding padding: CGFloat = 0) -> UIView {
         view.addSubview(self)
         NSLayoutConstraint.activate([
             self.leadingAnchor.constraint(equalTo: view.leadingAnchor),
