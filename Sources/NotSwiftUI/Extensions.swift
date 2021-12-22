@@ -71,6 +71,22 @@ extension UIView: Objectified {
         return self
     }
     
+    public func setSystemFont(with size: CGFloat) -> UIView {
+        if let label = self as? UILabel {
+            label.font = .systemFont(ofSize: size)
+            
+        } else if let textView = self as? UITextView {
+            textView.font = .systemFont(ofSize: size)
+            
+        } else if let textField = self as? UITextField {
+            textField.font = .systemFont(ofSize: size)
+        }
+        
+        return self
+    }
+    
+    
+    
     public func addTarget(_ target: Any, action: Selector) {
         if self is UIButton {
             (self as! UIButton).addTarget(target, action: action, for: .touchUpInside)
