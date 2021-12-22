@@ -28,6 +28,11 @@ extension UIView: Objectified {
         return self
     }
     
+    public func visible() -> UIView {
+        layer.opacity = 1
+        return self
+    }
+    
     public func hidden() -> UIView {
         isHidden = true
         return self
