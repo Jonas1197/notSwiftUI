@@ -175,8 +175,12 @@ extension UIView {
                         andDelay delay: TimeInterval = 0,
                         withOptions options: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseOut],
                         _ completion: @escaping AnimationComplition,
-                        _ endAnimationComplition: @escaping FinishedAnimationComplition) -> UIView {
-        UIView.animate(withDuration: duration, delay: delay, options: options, animations: completion, completion: endAnimationComplition)
+                        _ endAnimationComplition: FinishedAnimationComplition? = nil) -> UIView {
+        UIView.animate(withDuration: duration,
+                       delay: delay,
+                       options: options,
+                       animations: completion,
+                       completion: endAnimationComplition != nil ? endAnimationComplition! : nil)
         return self
     }
     

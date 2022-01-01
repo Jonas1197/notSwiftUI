@@ -48,6 +48,6 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
                         andDelay delay: TimeInterval,
                         withOptions options: UIView.AnimationOptions,
                         _ completion: @escaping AnimationComplition,
-                        _ endAnimationComplition: @escaping FinishedAnimationComplition) -> UIView
+                        _ endAnimationComplition: FinishedAnimationComplition?) -> UIView
     
 }
