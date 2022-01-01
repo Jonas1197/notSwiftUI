@@ -157,7 +157,9 @@ extension UIView {
         return self
     }
     
-    public func filled(in view: UIView, bellow topView: UIView, withPadding padding: CGFloat = 0) -> UIView {
+    public func filled(in view: UIView,
+                       bellow topView: UIView,
+                       withPadding padding: CGFloat = 0) -> UIView {
         view.addSubview(self)
         NSLayoutConstraint.activate([
             self.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -166,6 +168,15 @@ extension UIView {
             self.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
+        return self
+    }
+    
+    public func animate(withDuration duration: TimeInterval,
+                        andDelay delay: TimeInterval = 0,
+                        withOptions options: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseOut],
+                        _ completion: @escaping AnimationComplition,
+                        _ endAnimationComplition: @escaping FinishedAnimationComplition) -> UIView {
+        UIView.animate(withDuration: duration, delay: delay, options: options, animations: completion, completion: endAnimationComplition)
         return self
     }
     

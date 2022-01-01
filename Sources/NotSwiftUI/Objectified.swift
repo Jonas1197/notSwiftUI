@@ -7,6 +7,9 @@
 
 import UIKit
 
+public typealias AnimationComplition         = () -> Void
+public typealias FinishedAnimationComplition = (Bool) -> Void
+
 public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceContainer, UIDynamicItem, UITraitEnvironment, UICoordinateSpace, UIFocusItem, UIFocusItemContainer, CALayerDelegate {
     func shadowed(with color: UIColor, offset: CGSize, radius: CGFloat, _ opacity: Float) -> UIView
     func translucent(_ opacity: Float)            -> UIView
@@ -41,5 +44,10 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
                 bellow topView: UIView,
                 withPadding padding: CGFloat) -> UIView
   
+    func animate(withDuration duration: TimeInterval,
+                        andDelay delay: TimeInterval,
+                        withOptions options: UIView.AnimationOptions,
+                        _ completion: @escaping AnimationComplition,
+                        _ endAnimationComplition: @escaping FinishedAnimationComplition) -> UIView
     
 }
