@@ -44,10 +44,12 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
                 bellow topView: UIView,
                 withPadding padding: CGFloat) -> UIView
   
-    func animate(withDuration duration: TimeInterval,
+    func animated(withDuration duration: TimeInterval,
                         andDelay delay: TimeInterval,
                         withOptions options: UIView.AnimationOptions,
                         _ completion: @escaping AnimationComplition,
                         _ endAnimationComplition: FinishedAnimationComplition?) -> UIView
+    
+    func fonted(ofType type: FontType, size: CGFloat, weight: UIFont.Weight) -> UIView
     
 }

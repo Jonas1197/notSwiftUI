@@ -125,6 +125,42 @@ extension UIView: Objectified {
             addTarget(target, action: action)
         }
     }
+    
+    public func animated(withDuration duration: TimeInterval,
+                        andDelay delay: TimeInterval = 0,
+                        withOptions options: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseOut],
+                        _ completion: @escaping AnimationComplition,
+                        _ endAnimationComplition: FinishedAnimationComplition? = nil) -> UIView {
+        UIView.animate(withDuration: duration,
+                       delay: delay,
+                       options: options,
+                       animations: completion,
+                       completion: endAnimationComplition != nil ? endAnimationComplition! : nil)
+        return self
+    }
+    
+    public func fonted(ofType type: FontType, size: CGFloat, weight: UIFont.Weight = .regular) -> UIView {
+        
+        if self is UILabel {
+            switch type {
+            case .system:
+                (self as! UILabel).font = .systemFont(ofSize: size, weight: weight)
+            case .custom(let name):
+                (self as! UILabel).font = .init(name: name, size: size)
+                
+            }
+            
+        } else if self is UITextView {
+            switch type {
+            case .system:
+                (self as! UITextView).font = .systemFont(ofSize: size, weight: weight)
+            case .custom(let name):
+                (self as! UITextView).font = .init(name: name, size: size)
+            }
+        }
+        
+        return self
+    }
 }
 
 
@@ -170,20 +206,6 @@ extension UIView {
         
         return self
     }
-    
-    public func animate(withDuration duration: TimeInterval,
-                        andDelay delay: TimeInterval = 0,
-                        withOptions options: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseOut],
-                        _ completion: @escaping AnimationComplition,
-                        _ endAnimationComplition: FinishedAnimationComplition? = nil) -> UIView {
-        UIView.animate(withDuration: duration,
-                       delay: delay,
-                       options: options,
-                       animations: completion,
-                       completion: endAnimationComplition != nil ? endAnimationComplition! : nil)
-        return self
-    }
-    
  }
 
 

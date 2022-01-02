@@ -13,6 +13,11 @@ public enum FixState {
     case notFixed
 }
 
+public enum FontType {
+    case system
+    case custom(String)
+}
+
 public enum Object {
     
     //MARK: - UIKit
