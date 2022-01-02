@@ -88,6 +88,17 @@ extension UIView: Objectified {
         return self
     }
     
+    public func setImage(image: UIImage?) -> UIView {
+        if let _ = self as? UIImageView {
+            (self as! UIImageView).image = image
+            
+        } else if let _ = self as? UIButton {
+            (self as! UIButton).setImage(image, for: .normal)
+        }
+        
+        return self
+    }
+    
     public func setSystemFont(with size: CGFloat) -> UIView {
         if let label = self as? UILabel {
             label.font = .systemFont(ofSize: size)
