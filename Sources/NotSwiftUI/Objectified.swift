@@ -24,6 +24,7 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     func setSystemFont(with size: CGFloat)        -> UIView
     func setText(_ text: String)                  -> UIView
     func setImage(imageName: String)              -> UIView
+    func setImage(image: UIImage?)                -> UIView
     
     func setSymbol(symbolName: String,
                    pointSize: CGFloat,
