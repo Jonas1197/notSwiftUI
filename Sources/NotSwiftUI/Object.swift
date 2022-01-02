@@ -22,7 +22,7 @@ public enum Object {
     
     //MARK: - UIKit
     case view(backgroundColor: UIColor = .black)
-    case label(text: String, textAlignment: NSTextAlignment, backgroundColor: UIColor, textColor: UIColor)
+    case label(text: String, textAlignment: NSTextAlignment, backgroundColor: UIColor = .clear, textColor: UIColor)
     case button(text: String = "", backgroundColor: UIColor, tintColor: UIColor)
     case buttonWithImage(image: UIImage?, text: String = "", backgroundColor: UIColor, tintColor: UIColor)
     case buttonWithSymbol(title: String = "", symbolName: String, pointSize: CGFloat, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor = .white, backgroundColor: UIColor = .clear)
