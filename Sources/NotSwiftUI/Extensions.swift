@@ -7,9 +7,26 @@
 
 import UIKit
 
+/*
+ withDuration duration: TimeInterval,
+                     andDelay delay: TimeInterval,
+                     withOptions options: UIView.AnimationOptions,
+                     _ completion: @escaping AnimationComplition,
+                     _ endAnimationComplition: FinishedAnimationComplition?
+ */
+
+public enum ChainedAction {
+    case animation(duration: TimeInterval,
+                   delay: TimeInterval = 0,
+                   options: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseOut],
+                   completion: AnimationComplition,
+                   endAnimationComplition: FinishedAnimationComplition? = nil)
+}
+
 
 //MARK: - Objectified methods
 extension UIView: Objectified {
+    
     public func shadowed(with color: UIColor, offset: CGSize, radius: CGFloat, _ opacity: Float) -> UIView {
         (self as UIView).layer.shadowColor   = color.cgColor
         (self as UIView).layer.shadowOffset  = offset
@@ -142,6 +159,7 @@ extension UIView: Objectified {
                         withOptions options: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseOut],
                         _ completion: @escaping AnimationComplition,
                         _ endAnimationComplition: FinishedAnimationComplition? = nil) -> UIView {
+        
         DispatchQueue.main.async {
             UIView.animate(withDuration: duration,
                            delay: delay,
@@ -154,7 +172,6 @@ extension UIView: Objectified {
     }
     
     public func fonted(ofType type: FontType, size: CGFloat, weight: UIFont.Weight = .regular) -> UIView {
-        
         if self is UILabel {
             switch type {
             case .system:
@@ -175,11 +192,17 @@ extension UIView: Objectified {
         
         return self
     }
+    
+    public func clipsedToBounds(_ clipsed: Bool = true) -> UIView {
+        clipsToBounds = clipsed
+        return self
+    }
 }
 
 
 //MARK: - Fixing views
 extension UIView {
+    
     public func centered(in view: UIView) -> UIView {
         view.addSubview(self)
         NSLayoutConstraint.activate([
@@ -212,13 +235,20 @@ extension UIView {
                        withPadding padding: CGFloat = 0) -> UIView {
         view.addSubview(self)
         NSLayoutConstraint.activate([
-            self.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            self.leadingAnchor.constraint(equalTo:  view.leadingAnchor),
             self.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            self.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: padding),
-            self.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            self.topAnchor.constraint(equalTo:      topView.bottomAnchor, constant: padding),
+            self.bottomAnchor.constraint(equalTo:   view.bottomAnchor)
         ])
         
         return self
+    }
+    
+    public func chain(with action: ChainedAction) -> UIView {
+        switch action {
+        case .animation(let duration, let delay, let options, let completion, let endAnimationComplition):
+            return animated(withDuration: duration, andDelay: delay, withOptions: options, completion, endAnimationComplition)
+        }
     }
  }
 

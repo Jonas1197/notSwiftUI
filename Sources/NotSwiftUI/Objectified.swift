@@ -11,6 +11,8 @@ public typealias AnimationComplition         = () -> Void
 public typealias FinishedAnimationComplition = (Bool) -> Void
 
 public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceContainer, UIDynamicItem, UITraitEnvironment, UICoordinateSpace, UIFocusItem, UIFocusItemContainer, CALayerDelegate {
+    
+    
     func shadowed(with color: UIColor, offset: CGSize, radius: CGFloat, _ opacity: Float) -> UIView
     func translucent(_ opacity: Float)            -> UIView
     func invisible()                              -> UIView
@@ -25,6 +27,11 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     func setText(_ text: String)                  -> UIView
     func setImage(imageName: String)              -> UIView
     func setImage(image: UIImage?)                -> UIView
+    
+    /**
+     Determines whether subviews are confined to the bounds of the view - sets 'true' by default.
+     */
+    func clipsedToBounds(_ clipsed: Bool)         -> UIView
     
     func setSymbol(symbolName: String,
                    pointSize: CGFloat,
@@ -53,4 +60,6 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     
     func fonted(ofType type: FontType, size: CGFloat, weight: UIFont.Weight) -> UIView
     
+    
+    func chain(with action: ChainedAction) -> UIView
 }
