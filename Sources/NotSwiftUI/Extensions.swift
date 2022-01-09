@@ -27,7 +27,7 @@ public enum ChainedAction {
 //MARK: - Objectified methods
 extension UIView: Objectified {
     
-    public func shadowed(with color: UIColor, offset: CGSize, radius: CGFloat, _ opacity: Float) -> UIView {
+    @discardableResult public func shadowed(with color: UIColor, offset: CGSize, radius: CGFloat, _ opacity: Float) -> UIView {
         (self as UIView).layer.shadowColor   = color.cgColor
         (self as UIView).layer.shadowOffset  = offset
         (self as UIView).layer.shadowRadius  = radius
@@ -35,54 +35,54 @@ extension UIView: Objectified {
         return self
     }
     
-    public func translucent(_ opacity: Float = 0.6) -> UIView {
+    @discardableResult public func translucent(_ opacity: Float = 0.6) -> UIView {
         layer.opacity = opacity
         return self
     }
     
-    public func invisible() -> UIView {
+    @discardableResult public func invisible() -> UIView {
         layer.opacity = 0
         return self
     }
     
-    public func visible() -> UIView {
+    @discardableResult public func visible() -> UIView {
         layer.opacity = 1
         return self
     }
     
-    public func hidden() -> UIView {
+    @discardableResult public func hidden() -> UIView {
         isHidden = true
         return self
     }
     
-    public func showing() -> UIView {
+    @discardableResult public func showing() -> UIView {
         isHidden = false
         return self
     }
     
-    public func backgroundColored(_ color: UIColor) -> UIView {
+    @discardableResult public func backgroundColored(_ color: UIColor) -> UIView {
         backgroundColor = color
         return self
     }
     
-    public func tintColored(_ color: UIColor) -> UIView {
+    @discardableResult public func tintColored(_ color: UIColor) -> UIView {
         tintColor = color
         return self
     }
     
-    public func rounded(_ radius: CGFloat) -> UIView {
+    @discardableResult public func rounded(_ radius: CGFloat) -> UIView {
         layer.cornerRadius = radius
         layer.layoutIfNeeded()
         return self
     }
     
-    public func bordered(width: CGFloat, color: UIColor) -> UIView {
+    @discardableResult public func bordered(width: CGFloat, color: UIColor) -> UIView {
         layer.borderColor = color.cgColor
         layer.borderWidth = width
         return self
     }
     
-    public func setSymbol(symbolName: String, pointSize: CGFloat, contentMode: UIImageView.ContentMode, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor) -> UIView {
+    @discardableResult public func setSymbol(symbolName: String, pointSize: CGFloat, contentMode: UIImageView.ContentMode, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor) -> UIView {
         if let _ = self as? UIImageView {
             let configuration                  = UIImage.SymbolConfiguration(pointSize: pointSize, weight: weight, scale: scale)
             let image                          = UIImage(systemName: symbolName, withConfiguration: configuration)
@@ -94,7 +94,7 @@ extension UIView: Objectified {
         return self
     }
     
-    public func setImage(imageName: String) -> UIView {
+    @discardableResult public func setImage(imageName: String) -> UIView {
         if let _ = self as? UIImageView {
             (self as! UIImageView).image = .init(named: imageName)
             
@@ -105,7 +105,7 @@ extension UIView: Objectified {
         return self
     }
     
-    public func setImage(image: UIImage?) -> UIView {
+    @discardableResult public func setImage(image: UIImage?) -> UIView {
         if let _ = self as? UIImageView {
             (self as! UIImageView).image = image
             
@@ -116,7 +116,7 @@ extension UIView: Objectified {
         return self
     }
     
-    public func setSystemFont(with size: CGFloat) -> UIView {
+    @discardableResult public func setSystemFont(with size: CGFloat) -> UIView {
         if let label = self as? UILabel {
             label.font = .systemFont(ofSize: size)
             
@@ -130,7 +130,7 @@ extension UIView: Objectified {
         return self
     }
     
-    public func setText(_ text: String) -> UIView {
+    @discardableResult public func setText(_ text: String) -> UIView {
         if let label = self as? UILabel {
             label.text = text
             
@@ -144,9 +144,7 @@ extension UIView: Objectified {
         return self
     }
     
-    
-    
-    public func addTarget(_ target: Any, action: Selector) {
+    @discardableResult public func addTarget(_ target: Any, action: Selector) {
         if self is UIButton {
             (self as! UIButton).addTarget(target, action: action, for: .touchUpInside)
         } else {
@@ -154,7 +152,7 @@ extension UIView: Objectified {
         }
     }
     
-    public func animated(withDuration duration: TimeInterval,
+    @discardableResult public func animated(withDuration duration: TimeInterval,
                         andDelay delay: TimeInterval = 0,
                         withOptions options: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseOut],
                         _ completion: @escaping AnimationComplition,
@@ -171,7 +169,7 @@ extension UIView: Objectified {
         return self
     }
     
-    public func fonted(ofType type: FontType, size: CGFloat, weight: UIFont.Weight = .regular) -> UIView {
+    @discardableResult public func fonted(ofType type: FontType, size: CGFloat, weight: UIFont.Weight = .regular) -> UIView {
         if self is UILabel {
             switch type {
             case .system:
@@ -193,7 +191,7 @@ extension UIView: Objectified {
         return self
     }
     
-    public func clipsedToBounds(_ clipsed: Bool = true) -> UIView {
+    @discardableResult public func clipsedToBounds(_ clipsed: Bool = true) -> UIView {
         clipsToBounds = clipsed
         return self
     }
@@ -203,7 +201,7 @@ extension UIView: Objectified {
 //MARK: - Fixing views
 extension UIView {
     
-    public func centered(in view: UIView) -> UIView {
+    @discardableResult public func centered(in view: UIView) -> UIView {
         view.addSubview(self)
         NSLayoutConstraint.activate([
             self.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -213,7 +211,7 @@ extension UIView {
         return self
     }
     
-    public func filled(in view: UIView,
+    @discardableResult public func filled(in view: UIView,
                      leadingPadding:  CGFloat = 0,
                      trailingPadding: CGFloat = 0,
                      topPadding:      CGFloat = 0,
@@ -230,7 +228,7 @@ extension UIView {
         return self
     }
     
-    public func filled(in view: UIView,
+    @discardableResult public func filled(in view: UIView,
                        bellow topView: UIView,
                        withPadding padding: CGFloat = 0) -> UIView {
         view.addSubview(self)
@@ -244,7 +242,7 @@ extension UIView {
         return self
     }
     
-    public func chain(with action: ChainedAction) -> UIView {
+    @discardableResult public func chain(with action: ChainedAction) -> UIView {
         switch action {
         case .animation(let duration, let delay, let options, let completion, let endAnimationComplition):
             return animated(withDuration: duration, andDelay: delay, withOptions: options, completion, endAnimationComplition)
@@ -254,11 +252,11 @@ extension UIView {
 
 
 extension Array where Element == UIView {
-    public func vstacked(spacing: CGFloat = 0, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution) -> UIView {
+    @discardableResult public func vstacked(spacing: CGFloat = 0, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution) -> UIView {
         return Object.vstack(arrangedSubviews: self, spacing: spacing, alignment: alignment, distribution: distribution).create()
     }
     
-    public func hstacked(spacing: CGFloat = 0, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution) -> UIView {
+    @discardableResult public func hstacked(spacing: CGFloat = 0, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution) -> UIView {
         return Object.hstack(arrangedSubviews: self, spacing: spacing, alignment: alignment, distribution: distribution).create()
     }
 }
