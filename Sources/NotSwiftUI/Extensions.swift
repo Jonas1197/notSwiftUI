@@ -144,7 +144,7 @@ extension UIView: Objectified {
         return self
     }
     
-    @discardableResult public func addTarget(_ target: Any, action: Selector) {
+    public func addTarget(_ target: Any, action: Selector) {
         if self is UIButton {
             (self as! UIButton).addTarget(target, action: action, for: .touchUpInside)
         } else {
@@ -163,7 +163,7 @@ extension UIView: Objectified {
                            delay: delay,
                            options: options,
                            animations: completion,
-                           completion: endAnimationComplition != nil ? endAnimationComplition! : nil)
+                           completion: endAnimationComplition)
         }
         
         return self
@@ -245,8 +245,16 @@ extension UIView {
     @discardableResult public func chain(with action: ChainedAction) -> UIView {
         switch action {
         case .animation(let duration, let delay, let options, let completion, let endAnimationComplition):
-            return animated(withDuration: duration, andDelay: delay, withOptions: options, completion, endAnimationComplition)
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                UIView.animate(withDuration: duration,
+                               delay: 0,
+                               options: options,
+                               animations: completion,
+                               completion: endAnimationComplition)
+            }
         }
+        
+        return self
     }
  }
 
