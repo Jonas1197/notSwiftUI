@@ -125,6 +125,9 @@ extension UIView: Objectified {
             
         } else if let textField = self as? UITextField {
             textField.font = .systemFont(ofSize: size)
+            
+        } else if let button = self as? UIButton {
+            button.titleLabel?.font = .systemFont(ofSize: size)
         }
         
         return self
@@ -139,6 +142,9 @@ extension UIView: Objectified {
             
         } else if let textField = self as? UITextField {
             textField.text = text
+            
+        } else if let button = self as? UIButton {
+            button.setTitle(text, for: .normal)
         }
         
         return self
