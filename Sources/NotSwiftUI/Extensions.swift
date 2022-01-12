@@ -154,7 +154,7 @@ extension UIView: Objectified {
         if self is UIButton {
             (self as! UIButton).addTarget(target, action: action, for: .touchUpInside)
         } else {
-            let tap = UITapGestureRecognizer(target: target, action: self)
+            let tap = UITapGestureRecognizer(target: target, action: action)
             addGestureRecognizer(tap)
         }
     }
