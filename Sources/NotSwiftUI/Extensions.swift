@@ -170,22 +170,25 @@ extension UIView: Objectified {
     }
     
     @discardableResult public func fonted(ofType type: FontType, size: CGFloat, weight: UIFont.Weight = .regular) -> UIView {
-        if self is UILabel {
-            switch type {
-            case .system:
-                (self as! UILabel).font = .systemFont(ofSize: size, weight: weight)
-            case .custom(let name):
-                (self as! UILabel).font = .init(name: name, size: size)
-                
+        var font = UIFont()
+        
+        switch type {
+        case .system:
+            font = .systemFont(ofSize: size, weight: weight)
+        case .custom(let name):
+            if let customFont = UIFont(name: name, size: size) {
+                font = customFont
             }
+        }
+        
+        if self is UILabel {
+            (self as! UILabel).font = font
             
         } else if self is UITextView {
-            switch type {
-            case .system:
-                (self as! UITextView).font = .systemFont(ofSize: size, weight: weight)
-            case .custom(let name):
-                (self as! UITextView).font = .init(name: name, size: size)
-            }
+            (self as! UITextView).font = font
+            
+        } else if self is UIButton {
+            (self as! UIButton).titleLabel?.font = font
         }
         
         return self
