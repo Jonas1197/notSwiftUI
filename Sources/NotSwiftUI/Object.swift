@@ -22,15 +22,53 @@ public enum Object {
     
     //MARK: - UIKit
     case view(backgroundColor: UIColor = .black)
-    case label(text: String, textAlignment: NSTextAlignment, backgroundColor: UIColor = .clear, textColor: UIColor)
-    case button(text: String = "", backgroundColor: UIColor, tintColor: UIColor)
-    case buttonWithImage(image: UIImage?, text: String = "", backgroundColor: UIColor, tintColor: UIColor)
-    case buttonWithSymbol(title: String = "", symbolName: String, pointSize: CGFloat, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor = .white, backgroundColor: UIColor = .clear)
-    case switchElement(title: String, target: Any, action: Selector)
-    case hstack(arrangedSubviews: [UIView], spacing: CGFloat, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution)
-    case vstack(arrangedSubviews: [UIView], spacing: CGFloat, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution)
-    case imageViewWithImage(image: UIImage?, contentMode: UIImageView.ContentMode, backgroundColor: UIColor = .clear)
-    case imageViewWithSFSymbol(symbolName: String, pointSize: CGFloat, contentMode: UIImageView.ContentMode, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor)
+    
+    case label(text: String,
+               textAlignment: NSTextAlignment,
+               backgroundColor: UIColor = .clear,
+               textColor: UIColor)
+    
+    case button(text: String = "",
+                backgroundColor: UIColor,
+                tintColor: UIColor)
+    
+    case buttonWithImage(image: UIImage?,
+                         text: String = "",
+                         backgroundColor: UIColor,
+                         tintColor: UIColor)
+    
+    case buttonWithSymbol(title: String = "",
+                          symbolName: String,
+                          pointSize: CGFloat,
+                          weight: UIImage.SymbolWeight,
+                          scale: UIImage.SymbolScale,
+                          tintColor: UIColor = .white,
+                          backgroundColor: UIColor = .clear)
+    
+    case switchElement(title: String,
+                       target: Any,
+                       action: Selector)
+    
+    case hstack(arrangedSubviews: [UIView],
+                spacing: CGFloat,
+                alignment: UIStackView.Alignment,
+                distribution: UIStackView.Distribution)
+    
+    case vstack(arrangedSubviews: [UIView],
+                spacing: CGFloat,
+                alignment: UIStackView.Alignment,
+                distribution: UIStackView.Distribution)
+    
+    case imageViewWithImage(image: UIImage?,
+                            contentMode: UIImageView.ContentMode,
+                            backgroundColor: UIColor = .clear)
+    
+    case imageViewWithSFSymbol(symbolName: String,
+                               pointSize: CGFloat,
+                               contentMode: UIImageView.ContentMode,
+                               weight: UIImage.SymbolWeight,
+                               scale: UIImage.SymbolScale,
+                               tintColor: UIColor)
     
     //MARK: - Shape
     case square(color: UIColor = .black, width: Double, height: Double)
