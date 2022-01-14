@@ -26,7 +26,7 @@ public enum Object {
     case button(text: String = "", backgroundColor: UIColor, tintColor: UIColor)
     case buttonWithImage(image: UIImage?, text: String = "", backgroundColor: UIColor, tintColor: UIColor)
     case buttonWithSymbol(title: String = "", symbolName: String, pointSize: CGFloat, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor = .white, backgroundColor: UIColor = .clear)
-    case switchElement(target: Any, action: Selector)
+    case switchElement(title: String, target: Any, action: Selector)
     case hstack(arrangedSubviews: [UIView], spacing: CGFloat, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution)
     case vstack(arrangedSubviews: [UIView], spacing: CGFloat, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution)
     case imageViewWithImage(image: UIImage?, contentMode: UIImageView.ContentMode, backgroundColor: UIColor = .clear)
@@ -84,10 +84,11 @@ public enum Object {
             button.translatesAutoresizingMaskIntoConstraints = false
             return button
             
-        case .switchElement(let target, let action):
+        case .switchElement(let title, let target, let action):
             let switchElement = UISwitch()
             switchElement.addTarget(target, action: action, for: .valueChanged)
             switchElement.translatesAutoresizingMaskIntoConstraints = false
+            switchElement.title = title
             return switchElement
             
         case .hstack(let arrangedSubviews, let spacing, let alignment, let distribution):

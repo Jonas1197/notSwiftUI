@@ -145,6 +145,9 @@ extension UIView: Objectified {
             
         } else if let button = self as? UIButton {
             button.setTitle(text, for: .normal)
+            
+        } else if let `switch` = self as? UISwitch {
+            `switch`.title = text
         }
         
         return self
