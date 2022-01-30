@@ -38,6 +38,12 @@ public enum Object {
                backgroundColor: UIColor = .clear,
                textColor: UIColor)
     
+    case textfield(text: String = "",
+                   placeholder: String = "",
+                   borderStyle: UITextField.BorderStyle = .roundedRect,
+                   keyboardType: UIKeyboardType,
+                   textAlignment: NSTextAlignment = .natural)
+    
     /**
      Declare a UIButton with a title, background color and tint color.
      - Parameter text: The text to be displayed on the button's label.
@@ -182,6 +188,16 @@ public enum Object {
             label.textAlignment   = textAlignment
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
+            
+        case .textfield(let text, let placeholder, let borderStyle, let keyboardType, let textAlignment):
+            let textfield           = UITextField()
+            textfield.text          = text
+            textfield.placeholder   = placeholder
+            textfield.borderStyle   = borderStyle
+            textfield.keyboardType  = keyboardType
+            textfield.textAlignment = textAlignment
+            textfield.translatesAutoresizingMaskIntoConstraints = false
+            return textfield
             
         //MARK: - UIButton
         case .button(let text, let backgroundColor, let tintColor):

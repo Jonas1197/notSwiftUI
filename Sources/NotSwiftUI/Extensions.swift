@@ -89,6 +89,13 @@ extension UIView: Objectified {
             (self as! UIImageView).image       = image
             (self as! UIImageView).tintColor   = tintColor
             (self as! UIImageView).contentMode = contentMode
+        
+        } else if let _ = self as? UIButton {
+            let configuration                  = UIImage.SymbolConfiguration(pointSize: pointSize, weight: weight, scale: scale)
+            let image                          = UIImage(systemName: symbolName, withConfiguration: configuration)
+            (self as! UIButton).setImage(image: image)
+            (self as! UIButton).tintColor   = tintColor
+            (self as! UIButton).contentMode = contentMode
         }
         
         return self
@@ -123,8 +130,8 @@ extension UIView: Objectified {
         } else if let textView = self as? UITextView {
             textView.font = .systemFont(ofSize: size)
             
-        } else if let textField = self as? UITextField {
-            textField.font = .systemFont(ofSize: size)
+        } else if let textfield = self as? UITextField {
+            textfield.font = .systemFont(ofSize: size)
             
         } else if let button = self as? UIButton {
             button.titleLabel?.font = .systemFont(ofSize: size)
