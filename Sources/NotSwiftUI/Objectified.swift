@@ -24,6 +24,7 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     func bordered(width: CGFloat, color: UIColor) -> UIView
     func setSystemFont(with size: CGFloat)        -> UIView
     func setText(_ text: String)                  -> UIView
+    func setNumberOfLines(_ numberOfLines: Int)   -> UIView
     func setImage(imageName: String)              -> UIView
     func setImage(image: UIImage?)                -> UIView
     
