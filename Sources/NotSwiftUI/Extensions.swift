@@ -160,6 +160,14 @@ extension UIView: Objectified {
         return self
     }
     
+    @discardableResult public func setNumberOfLines(_ numberOfLines: Int) -> UIView {
+        if let label = self as? UILabel {
+            label.numberOfLines = numberOfLines
+        }
+        
+        return self
+    }
+    
     public func addTarget(_ target: Any, action: Selector) {
         if self is UIButton {
             (self as! UIButton).addTarget(target, action: action, for: .touchUpInside)
