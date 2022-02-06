@@ -33,16 +33,17 @@ public enum Object {
      - Parameter textAlignment: The alignment of the displayed text.
      - Parameter textColor: The color of the text.
     */
-    case label(text: String,
-               textAlignment: NSTextAlignment,
+    case label(text:            String,
+               textAlignment:   NSTextAlignment,
                backgroundColor: UIColor = .clear,
-               textColor: UIColor)
+               textColor:       UIColor)
     
-    case textfield(text: String = "",
-                   placeholder: String = "",
-                   borderStyle: UITextField.BorderStyle = .roundedRect,
-                   keyboardType: UIKeyboardType,
-                   textAlignment: NSTextAlignment = .natural)
+    case textfield(text:              String = "",
+                   placeholder:       String = "",
+                   borderStyle:       UITextField.BorderStyle = .roundedRect,
+                   keyboardType:      UIKeyboardType,
+                   textAlignment:     NSTextAlignment = .natural,
+                   isSecureTextEntry: Bool = false)
     
     /**
      Declare a UIButton with a title, background color and tint color.
@@ -50,9 +51,9 @@ public enum Object {
      - Parameter backgroundColor: The background color of the button.
      - Parameter tintColor: The tint color of the button.
     */
-    case button(text: String = "",
+    case button(text:            String = "",
                 backgroundColor: UIColor,
-                tintColor: UIColor)
+                tintColor:       UIColor)
     
     /**
      Declare a UIButton with an image, background color and tint color. The text is by default empty as the image would cover it.
@@ -61,10 +62,10 @@ public enum Object {
      - Parameter backgroundColor: The background color of the button.
      - Parameter tintColor: The tint color of the button.
      */
-    case buttonWithImage(image: UIImage?,
-                         text: String = "",
+    case buttonWithImage(image:           UIImage?,
+                         text:            String = "",
                          backgroundColor: UIColor,
-                         tintColor: UIColor)
+                         tintColor:       UIColor)
     
     /**
      Declare a button with an SFSymbol's name, a point size, weight and scale. The title of the button would by default be empty. Tint color as well as background color are by defauly white and clear respectively.
@@ -75,12 +76,12 @@ public enum Object {
      - Parameter tintColor: The tint color of the displayed SFSymbol. This is set to white if not specified otherwise.
      - Parameter backgroundColor: The background color of the UIButton. This is set to clear if not specified otherwise.
      */
-    case buttonWithSymbol(title: String = "",
-                          symbolName: String,
-                          pointSize: CGFloat,
-                          weight: UIImage.SymbolWeight,
-                          scale: UIImage.SymbolScale,
-                          tintColor: UIColor = .white,
+    case buttonWithSymbol(title:           String = "",
+                          symbolName:      String,
+                          pointSize:       CGFloat,
+                          weight:          UIImage.SymbolWeight,
+                          scale:           UIImage.SymbolScale,
+                          tintColor:       UIColor = .white,
                           backgroundColor: UIColor = .clear)
     
     /**
@@ -89,7 +90,7 @@ public enum Object {
      - Parameter target: The target of the UISwitch.
      - Parameter action: The action to be fired once the UISwitch's value has changed.
      */
-    case switchElement(title: String,
+    case switchElement(title:  String,
                        target: Any,
                        action: Selector)
     
@@ -101,9 +102,9 @@ public enum Object {
      - Parameter distribution: Teh distribution of the stacked views.
      */
     case hstack(arrangedSubviews: [UIView],
-                spacing: CGFloat,
-                alignment: UIStackView.Alignment,
-                distribution: UIStackView.Distribution)
+                spacing:          CGFloat,
+                alignment:        UIStackView.Alignment,
+                distribution:     UIStackView.Distribution)
     
     /**
      Delcare a UIStackView with a vertical axis from an array of UIViews, with spacing between each view, alignment and distribution.
@@ -113,9 +114,9 @@ public enum Object {
      - Parameter distribution: Teh distribution of the stacked views.
      */
     case vstack(arrangedSubviews: [UIView],
-                spacing: CGFloat,
-                alignment: UIStackView.Alignment,
-                distribution: UIStackView.Distribution)
+                spacing:          CGFloat,
+                alignment:        UIStackView.Alignment,
+                distribution:     UIStackView.Distribution)
     
     /**
      Declare a UIImageView with an image and content mode. Background color will be by default clear if not specified otherwise.
@@ -123,8 +124,8 @@ public enum Object {
      - Parameter cotentMode: The content mode of the displayed image within the UIImageView.
      - Parameter backgroundColor: The background color of the UIImageView. If not specifically specified this will be set to clear.
      */
-    case imageViewWithImage(image: UIImage?,
-                            contentMode: UIImageView.ContentMode,
+    case imageViewWithImage(image:           UIImage?,
+                            contentMode:     UIImageView.ContentMode,
                             backgroundColor: UIColor = .clear)
     
     
@@ -137,12 +138,12 @@ public enum Object {
      - Parameter scale: The symbol scale of the displayed SFSymbol.
      - Parameter tintColor: The tint color of the displayed SFSymbol.
      */
-    case imageViewWithSFSymbol(symbolName: String,
-                               pointSize: CGFloat,
+    case imageViewWithSFSymbol(symbolName:  String,
+                               pointSize:   CGFloat,
                                contentMode: UIImageView.ContentMode,
-                               weight: UIImage.SymbolWeight,
-                               scale: UIImage.SymbolScale,
-                               tintColor: UIColor)
+                               weight:      UIImage.SymbolWeight,
+                               scale:       UIImage.SymbolScale,
+                               tintColor:   UIColor)
     
     //MARK: - Shape
     
@@ -153,8 +154,8 @@ public enum Object {
      - Parameter height: The height of the declared rectangle.
      */
     case rectangle(color: UIColor = .black,
-                width: Double,
-                height: Double)
+                width:    Double,
+                height:   Double)
     
     /**
      Declare a UIView with a specific color and diameter, which will be rendered as a circle.
@@ -162,7 +163,7 @@ public enum Object {
      - Parameter size: The diameter of the declared circle.
      */
     case circle(color: UIColor = .black,
-                size: Double)
+                size:  Double)
     
     /**
      The create method required to be invoked after choosing an object to declare. This method will create the elemnt of the specified object and will return it as a UIView.
@@ -173,7 +174,7 @@ public enum Object {
             
         //MARK: - UIKit
         case .view(let backgroundColor):
-            let view = UIView()
+            let view             = UIView()
             view.backgroundColor = backgroundColor
             view.translatesAutoresizingMaskIntoConstraints = false
             return view
@@ -189,13 +190,14 @@ public enum Object {
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
             
-        case .textfield(let text, let placeholder, let borderStyle, let keyboardType, let textAlignment):
-            let textfield           = UITextField()
-            textfield.text          = text
-            textfield.placeholder   = placeholder
-            textfield.borderStyle   = borderStyle
-            textfield.keyboardType  = keyboardType
-            textfield.textAlignment = textAlignment
+        case .textfield(let text, let placeholder, let borderStyle, let keyboardType, let textAlignment, let secureTextEntry):
+            let textfield               = UITextField()
+            textfield.text              = text
+            textfield.placeholder       = placeholder
+            textfield.borderStyle       = borderStyle
+            textfield.keyboardType      = keyboardType
+            textfield.textAlignment     = textAlignment
+            textfield.isSecureTextEntry = secureTextEntry
             textfield.translatesAutoresizingMaskIntoConstraints = false
             return textfield
             
