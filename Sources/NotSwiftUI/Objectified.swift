@@ -13,22 +13,23 @@ public typealias FinishedAnimationComplition = (Bool) -> Void
 public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceContainer, UIDynamicItem, UITraitEnvironment, UICoordinateSpace, UIFocusItem, UIFocusItemContainer, CALayerDelegate {
     
     func shadowed(with color: UIColor, offset: CGSize, radius: CGFloat, _ opacity: Float) -> UIView
-    func translucent(_ opacity: Float)            -> UIView
-    func invisible()                              -> UIView
-    func visible()                                -> UIView 
-    func backgroundColored(_ color: UIColor)      -> UIView
-    func tintColored(_ color: UIColor)            -> UIView
-    func hidden()                                 -> UIView
-    func showing()                                -> UIView
-    func rounded(_ radius: CGFloat)               -> UIView
-    func bordered(width: CGFloat, color: UIColor) -> UIView
-    func setSystemFont(with size: CGFloat)        -> UIView
-    func setText(_ text: String)                  -> UIView
-    func setNumberOfLines(_ numberOfLines: Int)   -> UIView
-    func setImage(imageName: String)              -> UIView
-    func setImage(image: UIImage?)                -> UIView
-    func setPlaceholder(_ text: String)           -> UIView
-    func correctsEnteredText(_ corrects: Bool)    -> UIView
+    func translucent(_ opacity: Float)                  -> UIView
+    func invisible()                                    -> UIView
+    func visible()                                      -> UIView
+    func backgroundColored(_ color: UIColor)            -> UIView
+    func tintColored(_ color: UIColor)                  -> UIView
+    func hidden()                                       -> UIView
+    func showing()                                      -> UIView
+    func rounded(_ radius: CGFloat)                     -> UIView
+    func bordered(width: CGFloat, color: UIColor)       -> UIView
+    func setSystemFont(with size: CGFloat)              -> UIView
+    func setText(_ text: String)                        -> UIView
+    func setNumberOfLines(_ numberOfLines: Int)         -> UIView
+    func setImage(imageName: String)                    -> UIView
+    func setImage(image: UIImage?)                      -> UIView
+    func setPlaceholder(_ text: String)                 -> UIView
+    func correctsEnteredText(_ corrects: Bool)          -> UIView
+    func underlined(title: String, tintColor: UIColor?) -> UIView
     
     
     /**

@@ -26,7 +26,7 @@ public enum ChainedAction {
 
 //MARK: - Objectified methods
 extension UIView: Objectified {
-    
+
     @discardableResult public func shadowed(with color: UIColor, offset: CGSize, radius: CGFloat, _ opacity: Float) -> UIView {
         (self as UIView).layer.shadowColor   = color.cgColor
         (self as UIView).layer.shadowOffset  = offset
@@ -237,6 +237,21 @@ extension UIView: Objectified {
             (self as! UITextField).autocorrectionType = corrects ? .yes : .no
         } else if self is UITextView {
             (self as! UITextView).autocorrectionType =  corrects ? .yes : .no
+        }
+        
+        return self
+    }
+    
+    @discardableResult public func underlined(title: String, tintColor: UIColor? = nil) -> UIView {
+        if self is UIButton {
+            var attributes: [NSAttributedString.Key : Any] = [.underlineStyle  : NSUnderlineStyle.single.rawValue]
+            if let tintColor = tintColor {
+                attributes[.foregroundColor] = tintColor
+            } else {
+                attributes[.foregroundColor] = (self as! UIButton).tintColor
+            }
+            
+            (self as! UIButton).setAttributedTitle(.init(string: title, attributes: attributes), for: .normal)
         }
         
         return self
