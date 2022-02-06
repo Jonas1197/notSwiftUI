@@ -27,6 +27,9 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     func setNumberOfLines(_ numberOfLines: Int)   -> UIView
     func setImage(imageName: String)              -> UIView
     func setImage(image: UIImage?)                -> UIView
+    func setPlaceholder(_ text: String)           -> UIView
+    func correctsEnteredText(_ corrects: Bool)    -> UIView
+    
     
     /**
      Determines whether subviews are confined to the bounds of the view - sets 'true' by default.

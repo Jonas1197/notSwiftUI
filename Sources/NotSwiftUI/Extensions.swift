@@ -223,6 +223,24 @@ extension UIView: Objectified {
         clipsToBounds = clipsed
         return self
     }
+    
+    @discardableResult public func setPlaceholder(_ text: String) -> UIView {
+        if self is UITextField {
+            (self as! UITextField).placeholder = text
+        }
+        
+        return self
+    }
+    
+    @discardableResult public func correctsEnteredText(_ corrects: Bool) -> UIView {
+        if self is UITextField {
+            (self as! UITextField).autocorrectionType = corrects ? .yes : .no
+        } else if self is UITextView {
+            (self as! UITextView).autocorrectionType =  corrects ? .yes : .no
+        }
+        
+        return self
+    }
 }
 
 
