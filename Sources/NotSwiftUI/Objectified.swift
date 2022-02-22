@@ -30,7 +30,8 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     func setPlaceholder(_ text: String)                 -> UIView
     func correctsEnteredText(_ corrects: Bool)          -> UIView
     func underlined(title: String, tintColor: UIColor?) -> UIView
-    
+    func setLinebreakMode(_ mode: NSLineBreakMode)      -> UIView
+    func adjustedFontSizeToFitWidth(_ adjusted: Bool)   -> UIView
     
     /**
      Determines whether subviews are confined to the bounds of the view - sets 'true' by default.

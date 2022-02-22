@@ -82,6 +82,22 @@ extension UIView: Objectified {
         return self
     }
     
+    @discardableResult public func setLinebreakMode(_ mode: NSLineBreakMode) -> UIView {
+        if let _ = self as? UILabel {
+            (self as! UILabel).lineBreakMode = mode
+        }
+        
+        return self
+    }
+    
+    @discardableResult public func adjustedFontSizeToFitWidth(_ adjusted: Bool = true) -> UIView {
+        if let _ = self as? UILabel {
+            (self as! UILabel).adjustsFontSizeToFitWidth = adjusted
+        }
+        
+        return self
+    }
+    
     @discardableResult public func setSymbol(symbolName: String, pointSize: CGFloat, contentMode: UIImageView.ContentMode, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor) -> UIView {
         if let _ = self as? UIImageView {
             let configuration                  = UIImage.SymbolConfiguration(pointSize: pointSize, weight: weight, scale: scale)
