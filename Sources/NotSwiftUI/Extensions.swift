@@ -196,12 +196,13 @@ extension UIView: Objectified {
     @discardableResult public func animated(withDuration duration: TimeInterval,
                         andDelay delay: TimeInterval = 0,
                         withOptions options: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseOut],
+                        onMainQueue: Bool = true,
                         _ completion: @escaping AnimationComplition,
-                        _ endAnimationComplition: FinishedAnimationComplition? = nil,
-                                            onMainQueue: Bool = true) -> UIView {
+                        _ endAnimationComplition: FinishedAnimationComplition? = nil) -> UIView {
         
         if onMainQueue {
             DispatchQueue.main.async {
+                
                 UIView.animate(withDuration: duration,
                                delay: delay,
                                options: options,
