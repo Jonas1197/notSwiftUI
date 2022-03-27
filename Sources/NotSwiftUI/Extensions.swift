@@ -198,9 +198,9 @@ extension UIView: Objectified {
                         withOptions options: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseOut],
                         _ completion: @escaping AnimationComplition,
                         _ endAnimationComplition: FinishedAnimationComplition? = nil,
-                        runOnMainQueue: Bool = true) -> UIView {
+                                            onMainQueue: Bool = true) -> UIView {
         
-        if runOnMainQueue {
+        if onMainQueue {
             DispatchQueue.main.async {
                 UIView.animate(withDuration: duration,
                                delay: delay,

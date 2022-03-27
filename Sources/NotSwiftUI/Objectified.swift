@@ -61,7 +61,8 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
                         andDelay delay: TimeInterval,
                         withOptions options: UIView.AnimationOptions,
                         _ completion: @escaping AnimationComplition,
-                        _ endAnimationComplition: FinishedAnimationComplition?) -> UIView
+                        _ endAnimationComplition: FinishedAnimationComplition?,
+                        onMainQueue: Bool) -> UIView
     
     func fonted(ofType type: FontType, size: CGFloat, weight: UIFont.Weight) -> UIView
     
