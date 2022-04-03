@@ -311,6 +311,8 @@ extension UIView: Objectified {
         return self
     }
     
+    
+    @discardableResult
     public func coloredText(_ color: UIColor) -> UIView {
         if self is UILabel {
             (self as! UILabel).textColor = color
