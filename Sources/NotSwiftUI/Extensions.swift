@@ -303,7 +303,7 @@ extension UIView: Objectified {
         }
     }
     
-    public func attributedPlaceholder(_ string: String, attributes: [NSAttributedString.Key : Any]?) -> UIView {
+    @discardableResult public func attributedPlaceholder(_ string: String, attributes: [NSAttributedString.Key : Any]?) -> UIView {
         if self is UITextField {
             (self as! UITextField).attributedPlaceholder = NSAttributedString(string: string, attributes: attributes)
         }
@@ -312,8 +312,7 @@ extension UIView: Objectified {
     }
     
     
-    @discardableResult
-    public func coloredText(_ color: UIColor) -> UIView {
+    @discardableResult public func coloredText(_ color: UIColor) -> UIView {
         if self is UILabel {
             (self as! UILabel).textColor = color
             
@@ -324,7 +323,7 @@ extension UIView: Objectified {
         return self
     }
     
-    public func targeted(_ target: Any, action: Selector) -> UIView {
+    @discardableResult public func targeted(_ target: Any, action: Selector) -> UIView {
         if self is UIButton {
             (self as! UIButton).addTarget(target, action: action, for: .touchUpInside)
         } else {
