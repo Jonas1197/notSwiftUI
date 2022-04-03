@@ -26,7 +26,6 @@ public enum ChainedAction {
 
 //MARK: - Objectified methods
 extension UIView: Objectified {
-
     @discardableResult public func shadowed(with color: UIColor, offset: CGSize, radius: CGFloat, _ opacity: Float) -> UIView {
         (self as UIView).layer.shadowColor   = color.cgColor
         (self as UIView).layer.shadowOffset  = offset
@@ -280,6 +279,43 @@ extension UIView: Objectified {
             }
             
             (self as! UIButton).setAttributedTitle(.init(string: title, attributes: attributes), for: .normal)
+        }
+        
+        return self
+    }
+    
+    public func getText() -> String? {
+        if self is UITextField {
+            return (self as! UITextField).text
+            
+        } else if self is UITextView {
+            return (self as! UITextView).text
+            
+        } else if self is UIButton {
+            return (self as! UIButton).titleLabel?.text
+            
+        } else if self is UILabel {
+            return (self as! UILabel).text
+            
+        } else {
+            return nil
+        }
+    }
+    
+    public func attributedPlaceholder(_ string: String, attributes: [NSAttributedString.Key : Any]?) -> UIView {
+        if self is UITextField {
+            (self as! UITextField).attributedPlaceholder = NSAttributedString(string: string, attributes: attributes)
+        }
+        
+        return self
+    }
+    
+    public func coloredText(_ color: UIColor) -> UIView {
+        if self is UILabel {
+            (self as! UILabel).textColor = color
+            
+        } else if self is UIButton {
+            (self as! UIButton).setTitleColor(color, for: .normal)
         }
         
         return self

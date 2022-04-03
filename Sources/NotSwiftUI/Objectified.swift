@@ -66,6 +66,11 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     
     func fonted(ofType type: FontType, size: CGFloat, weight: UIFont.Weight) -> UIView
     
+    func getText() -> String?
+    
+    func attributedPlaceholder(_ string: String, attributes: [NSAttributedString.Key : Any]?) -> UIView
+    
+    func coloredText(_ color: UIColor) -> UIView
     
     func chain(with action: ChainedAction) -> UIView
 }
