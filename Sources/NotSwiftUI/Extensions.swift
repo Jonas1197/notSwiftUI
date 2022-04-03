@@ -303,6 +303,16 @@ extension UIView: Objectified {
         }
     }
     
+    @discardableResult public func notCapitilized(_ type: UITextAutocapitalizationType = .none) -> UIView {
+        if self is UITextField {
+            (self as! UITextField).autocapitalizationType = type
+        } else if self is UITextView {
+            (self as! UITextView).autocapitalizationType = type
+        }
+        
+        return self
+    }
+    
     @discardableResult public func attributedPlaceholder(_ string: String, attributes: [NSAttributedString.Key : Any]?) -> UIView {
         if self is UITextField {
             (self as! UITextField).attributedPlaceholder = NSAttributedString(string: string, attributes: attributes)
