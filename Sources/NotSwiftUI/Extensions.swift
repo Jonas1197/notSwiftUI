@@ -303,7 +303,7 @@ extension UIView: Objectified {
         }
     }
     
-    @discardableResult public func notCapitilized(_ type: UITextAutocapitalizationType = .none) -> UIView {
+    @discardableResult public func autoCapitilized(_ type: UITextAutocapitalizationType = .sentences) -> UIView {
         if self is UITextField {
             (self as! UITextField).autocapitalizationType = type
         } else if self is UITextView {

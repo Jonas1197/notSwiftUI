@@ -68,7 +68,7 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     
     func getText() -> String?
     
-    func notCapitilized(_ type: UITextAutocapitalizationType) -> UIView
+    func autoCapitilized(_ type: UITextAutocapitalizationType) -> UIView
     
     func attributedPlaceholder(_ string: String, attributes: [NSAttributedString.Key : Any]?) -> UIView
     
