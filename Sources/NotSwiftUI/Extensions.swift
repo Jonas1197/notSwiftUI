@@ -183,6 +183,7 @@ extension UIView: Objectified {
         return self
     }
     
+    @available(*, deprecated, renamed: "targeted")
     public func addTarget(_ target: Any, action: Selector) {
         if self is UIButton {
             (self as! UIButton).addTarget(target, action: action, for: .touchUpInside)
@@ -316,6 +317,17 @@ extension UIView: Objectified {
             
         } else if self is UIButton {
             (self as! UIButton).setTitleColor(color, for: .normal)
+        }
+        
+        return self
+    }
+    
+    public func targeted(_ target: Any, action: Selector) -> UIView {
+        if self is UIButton {
+            (self as! UIButton).addTarget(target, action: action, for: .touchUpInside)
+        } else {
+            let tap = UITapGestureRecognizer(target: target, action: action)
+            addGestureRecognizer(tap)
         }
         
         return self
