@@ -73,4 +73,6 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     func coloredText(_ color: UIColor) -> UIView
     
     func chain(with action: ChainedAction) -> UIView
+    
+    func targeted(_ target: Any, action: Selector) -> UIView
 }
