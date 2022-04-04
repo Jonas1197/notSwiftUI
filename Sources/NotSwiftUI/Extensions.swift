@@ -247,6 +247,20 @@ extension UIView: Objectified {
         return self
     }
     
+    @discardableResult public func fonted(_ font: UIFont) -> UIView {
+        if self is UILabel {
+            (self as! UILabel).font = font
+        } else if self is UITextView {
+            (self as! UITextView).font = font
+        } else if self is UIButton {
+            (self as! UIButton).titleLabel?.font = font
+        } else if self is UITextField {
+            (self as! UITextField).font = font
+        }
+        
+        return self
+    }
+    
     @discardableResult public func clipsedToBounds(_ clipsed: Bool = true) -> UIView {
         clipsToBounds = clipsed
         return self
@@ -291,6 +305,7 @@ extension UIView: Objectified {
             
         } else if self is UITextView {
             return (self as! UITextView).text
+            
             
         } else if self is UIButton {
             return (self as! UIButton).titleLabel?.text

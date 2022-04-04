@@ -90,8 +90,7 @@ public enum Object {
      - Parameter target: The target of the UISwitch.
      - Parameter action: The action to be fired once the UISwitch's value has changed.
      */
-    case switchElement(title:  String,
-                       target: Any,
+    case switchElement(target: Any,
                        action: Selector)
     
     /**
@@ -230,11 +229,10 @@ public enum Object {
             button.translatesAutoresizingMaskIntoConstraints = false
             return button
             
-        case .switchElement(let title, let target, let action):
+        case .switchElement(let target, let action):
             let switchElement = UISwitch()
             switchElement.addTarget(target, action: action, for: .valueChanged)
             switchElement.translatesAutoresizingMaskIntoConstraints = false
-            switchElement.title = title
             return switchElement
             
         case .hstack(let arrangedSubviews, let spacing, let alignment, let distribution):

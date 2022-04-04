@@ -66,6 +66,8 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     
     func fonted(ofType type: FontType, size: CGFloat, weight: UIFont.Weight) -> UIView
     
+    func fonted(_ font: UIFont) -> UIView
+    
     func getText() -> String?
     
     func autoCapitilized(_ type: UITextAutocapitalizationType) -> UIView
