@@ -29,7 +29,7 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     func setImage(image: UIImage?)                      -> UIView
     func setPlaceholder(_ text: String)                 -> UIView
     func correctsEnteredText(_ corrects: Bool)          -> UIView
-    func underlined(title: String, tintColor: UIColor?) -> UIView
+    func underlined(text: String, tintColor: UIColor?) -> UIView
     func setLinebreakMode(_ mode: NSLineBreakMode)      -> UIView
     func adjustedFontSizeToFitWidth(_ adjusted: Bool)   -> UIView
     
