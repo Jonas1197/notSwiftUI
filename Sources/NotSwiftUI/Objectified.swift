@@ -29,10 +29,10 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     func setImage(image: UIImage?)                      -> UIView
     func setPlaceholder(_ text: String)                 -> UIView
     func correctsEnteredText(_ corrects: Bool)          -> UIView
-    func underlined(text: String, tintColor: UIColor?) -> UIView
+    func underlined(text: String, tintColor: UIColor?)  -> UIView
     func setLinebreakMode(_ mode: NSLineBreakMode)      -> UIView
     func adjustedFontSizeToFitWidth(_ adjusted: Bool)   -> UIView
-    
+    func setTextAlignment(_ alignment: NSTextAlignment) -> UIView
     /**
      Determines whether subviews are confined to the bounds of the view - sets 'true' by default.
      */

@@ -146,6 +146,24 @@ extension UIView: Objectified {
         return self
     }
     
+    /**
+     Set the text alignemnt of a UILabel, UITexView, UITextField text or UIButton label.
+     - Parameter alignment: The desired text alignment.
+     */
+    @discardableResult public func setTextAlignment(_ alignment: NSTextAlignment) -> UIView {
+        if self is UILabel {
+            (self as! UILabel).textAlignment = alignment
+        } else if self is UITextView {
+            (self as! UITextView).textAlignment = alignment
+        } else if self is UITextField {
+            (self as! UITextField).textAlignment = alignment
+        } else if self is UIButton {
+            (self as! UIButton).titleLabel?.textAlignment = alignment
+        }
+        
+        return self
+    }
+    
     
     /**
      Set an SFSybmol to be presented within an imageView in a button.
