@@ -141,6 +141,8 @@ extension UIView: Objectified {
             if (self as! UIButton).titleLabel != nil {
                 (self as! UIButton).titleLabel!.adjustsFontSizeToFitWidth = adjusted
             }
+        } else if self is UITextView {
+            (self as! UITextView).adjustsFontForContentSizeCategory = adjusted
         }
         
         return self
