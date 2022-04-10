@@ -590,6 +590,22 @@ extension UIView {
         
         return self
     }
+    
+    @discardableResult public func actionWithSpringAnimation(_ action: @escaping () -> Void) -> UIView {
+        UIView.animate(withDuration: 0.15, delay: 0, options: .allowUserInteraction) {
+            self.transform = .init(scaleX: 0.94, y: 0.94)
+            self.alpha     = 0.5
+        } completion: { _ in
+            UIView.animate(withDuration: 0.15, delay: 0, options: .allowUserInteraction) {
+                self.transform = .identity
+                self.alpha     = 1
+            } completion: {  _ in
+                action()
+            }
+        }
+        
+        return self
+    }
  }
 
 
