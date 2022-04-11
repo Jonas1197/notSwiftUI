@@ -21,7 +21,7 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     func hidden()                                       -> UIView
     func showing()                                      -> UIView
     func rounded(_ radius: CGFloat)                     -> UIView
-    func bordered(width: CGFloat, color: UIColor)       -> UIView
+    func bordered(width: CGFloat, color: UIColor?)      -> UIView
     func setSystemFont(with size: CGFloat)              -> UIView
     func setText(_ text: String)                        -> UIView
     func setNumberOfLines(_ numberOfLines: Int)         -> UIView

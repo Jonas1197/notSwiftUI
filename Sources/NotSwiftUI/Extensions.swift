@@ -105,9 +105,13 @@ extension UIView: Objectified {
      - Parameter width: The width of the rendered border.
      - Parameter color: The color of the rendered border.
      */
-    @discardableResult public func bordered(width: CGFloat, color: UIColor) -> UIView {
-        layer.borderColor = color.cgColor
+    @discardableResult public func bordered(width: CGFloat, color: UIColor? = nil) -> UIView {
+        if let color = color {
+            layer.borderColor = color.cgColor
+        }
+        
         layer.borderWidth = width
+        
         return self
     }
     
