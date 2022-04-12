@@ -367,6 +367,20 @@ extension UIView: Objectified {
     }
     
     /**
+     Set the keyboard type to be used by the user upon editing.
+     - Parameter type: The desired type of the keyboard.
+     */
+    @discardableResult public func setKeyboardType(_ type: UIKeyboardType) -> UIView {
+        if self is UITextField {
+            (self as! UITextField).keyboardType = type
+        } else if self is UITextView {
+            (self as! UITextView).keyboardType = type
+        }
+        
+        return self
+    }
+    
+    /**
      Sets the font of a UILabel, UITextField, UITextView or a UIButton with a given font object.
      */
     @discardableResult public func fonted(_ font: UIFont) -> UIView {
