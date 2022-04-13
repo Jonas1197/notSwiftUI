@@ -367,6 +367,18 @@ extension UIView: Objectified {
     }
     
     /**
+     A Boolean value that indicates whether the text object disables text copying and, in some cases, hides the text that the user enters (this is true by default).
+     - Parameter secure: A boolean indicating whether secure text entry is active or not.
+     */
+    @discardableResult public func setSecureTextEntry(_ secure: Bool) -> UIView {
+        if self is UITextView {
+            (self as! UITextView).isSecureTextEntry = secure
+        }
+        
+        return self
+    }
+    
+    /**
      Set the keyboard type to be used by the user upon editing.
      - Parameter type: The desired type of the keyboard.
      */

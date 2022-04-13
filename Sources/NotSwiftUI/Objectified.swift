@@ -33,6 +33,7 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     func setLinebreakMode(_ mode: NSLineBreakMode)      -> UIView
     func adjustedFontSizeToFitWidth(_ adjusted: Bool)   -> UIView
     func setTextAlignment(_ alignment: NSTextAlignment) -> UIView
+    
     /**
      Determines whether subviews are confined to the bounds of the view - sets 'true' by default.
      */
@@ -67,6 +68,8 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     func fonted(ofType type: FontType, size: CGFloat, weight: UIFont.Weight) -> UIView
     
     func fonted(_ font: UIFont) -> UIView
+    
+    func setSecureTextEntry(_ secure: Bool) -> UIView
     
     func setKeyboardType(_ type: UIKeyboardType) -> UIView
     
