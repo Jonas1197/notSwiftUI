@@ -371,8 +371,8 @@ extension UIView: Objectified {
      - Parameter secure: A boolean indicating whether secure text entry is active or not.
      */
     @discardableResult public func setSecureTextEntry(_ secure: Bool = true) -> UIView {
-        if self is UITextView {
-            (self as! UITextView).isSecureTextEntry = secure
+        if self is UITextField {
+            (self as! UITextField).isSecureTextEntry = secure
         }
         
         return self
