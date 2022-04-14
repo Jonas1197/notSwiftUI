@@ -647,6 +647,21 @@ extension UIView {
         
         return self
     }
+    
+    /**
+     Apply a gradient starting from the top and moving all the way to the bottom.
+     - Parameter topColor: The color which starts at the top.
+     - Parameter bottomColor: The color which continues after the top color ahs been applied.
+     */
+    @discardableResult public func setGradientBackground(topColor tColor: UIColor, bottomColor bColor: UIColor) -> UIView {
+        let gradientLayer       = CAGradientLayer()
+        gradientLayer.colors    = [tColor.cgColor, bColor.cgColor]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame     = bounds
+        layer.insertSublayer(gradientLayer, at: 0)
+        
+        return self
+    }
  }
 
 
