@@ -559,6 +559,17 @@ extension UIView: Objectified {
         
         return self
     }
+    
+    @discardableResult public func performs(_ action: @escaping () -> ()) -> UIView {
+        if self is UIButton {
+            (self as! UIButton).addAction(action)
+            
+        } else {
+            addAction(action)
+        }
+        
+        return self
+    }
 }
 
 

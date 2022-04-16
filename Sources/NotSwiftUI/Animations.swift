@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Animations.swift
 //  
 //
 //  Created by Jonas Gamburg on 16/04/2022.
