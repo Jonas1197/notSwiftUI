@@ -96,7 +96,10 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     
     
     //MARK: - Animations
-    func actionWithSpringAnimation(springDuration duration: TimeInterval, _ action: @escaping AnimationComplition) -> UIView
+    func actionWithSpringAnimation(springDuration
+                                   duration: TimeInterval,
+                                   scaleValue scale: CGFloat,
+                                   _ action: @escaping AnimationComplition) -> UIView
     func shake() -> UIView
     func animated(withDuration duration: TimeInterval,
                         andDelay delay: TimeInterval,

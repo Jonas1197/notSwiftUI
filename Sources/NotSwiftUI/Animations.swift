@@ -8,9 +8,12 @@
 import UIKit
 
 extension UIView {
-    @discardableResult public func actionWithSpringAnimation(springDuration duration: TimeInterval = 0.15, _ action: @escaping () -> Void) -> UIView {
+    @discardableResult public func actionWithSpringAnimation(springDuration
+                                                             duration: TimeInterval = 0.15,
+                                                             scaleValue scale: CGFloat = 0.94, _
+                                                             action: @escaping () -> Void) -> UIView {
         UIView.animate(withDuration: duration, delay: 0, options: .allowUserInteraction) {
-            self.transform = .init(scaleX: 0.94, y: 0.94)
+            self.transform = .init(scaleX: scale, y: scale)
             self.alpha     = 0.5
         } completion: { _ in
             UIView.animate(withDuration: duration, delay: 0, options: .allowUserInteraction) {
