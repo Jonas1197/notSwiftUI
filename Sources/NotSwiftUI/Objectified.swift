@@ -52,6 +52,7 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     func setSecureTextEntry(_ secure: Bool)                    -> UIView
     func setKeyboardType(_ type: UIKeyboardType)               -> UIView
     func getText()                                             -> String?
+    func getPlaceholder()                                      -> String?
     func autoCapitilized(_ type: UITextAutocapitalizationType) -> UIView
     
     func attributedPlaceholder(_ string: String,

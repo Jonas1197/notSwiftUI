@@ -497,6 +497,17 @@ extension UIView: Objectified {
     }
     
     /**
+     Retrieve the placeholder text for a UITextField.
+     */
+    public func getPlaceholder() -> String? {
+        if self is UITextField {
+            return (self as! UITextField).placeholder
+        } else {
+            return nil
+        }
+    }
+    
+    /**
      Auto capitalizes sentences (this is set to auto capitalize sentences by default).
      */
     @discardableResult public func autoCapitilized(_ type: UITextAutocapitalizationType = .sentences) -> UIView {
