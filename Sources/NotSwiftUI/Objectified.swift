@@ -105,7 +105,7 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     func animated(withDuration duration: TimeInterval,
                         andDelay delay: TimeInterval,
                         withOptions options: UIView.AnimationOptions,
-                        onMainQueue: Bool,
+                        onMainThread: Bool,
                         _ completion: @escaping AnimationComplition,
                         _ endAnimationComplition: FinishedAnimationComplition?) -> UIView
 }

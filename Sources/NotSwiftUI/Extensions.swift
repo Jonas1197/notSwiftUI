@@ -38,7 +38,7 @@ extension UIView: Objectified {
      Changes the opacity property of layer of the current object. Default translucent value is 0.6.
      - Parameter opacity: Opacity value to be applied to the layer.opacity property of the object.
      */
-    @discardableResult public func translucent(_ opacity: Float = 0.6) -> UIView {
+    @discardableResult public func translucent(_ opacity: Float = 0.6) -> Self {
         layer.opacity = opacity
         return self
     }
@@ -46,7 +46,7 @@ extension UIView: Objectified {
     /**
      Sets the layer.opacity property of the object to 0 hence rendering it invisible.
      */
-    @discardableResult public func invisible() -> UIView {
+    @discardableResult public func invisible() -> Self {
         layer.opacity = 0
         return self
     }
@@ -54,7 +54,7 @@ extension UIView: Objectified {
     /**
      Sets the layer.opacity property of the object to 1 hence rendering it visible.
      */
-    @discardableResult public func visible() -> UIView {
+    @discardableResult public func visible() -> Self {
         layer.opacity = 1
         return self
     }
@@ -62,7 +62,7 @@ extension UIView: Objectified {
     /**
      Sets the isHidden property of the object to true hence hiding it from the view.
      */
-    @discardableResult public func hidden() -> UIView {
+    @discardableResult public func hidden() -> Self {
         isHidden = true
         return self
     }
@@ -70,7 +70,7 @@ extension UIView: Objectified {
     /**
      Sets the isHidden property of the object to false hence showing it on the view.
      */
-    @discardableResult public func showing() -> UIView {
+    @discardableResult public func showing() -> Self {
         isHidden = false
         return self
     }
@@ -79,7 +79,7 @@ extension UIView: Objectified {
      Sets the backgroundColor property of the object with a given UIColor.
      - Parameter color: The set background color.
      */
-    @discardableResult public func backgroundColored(_ color: UIColor) -> UIView {
+    @discardableResult public func backgroundColored(_ color: UIColor) -> Self {
         backgroundColor = color
         return self
     }
@@ -88,13 +88,13 @@ extension UIView: Objectified {
      Sets the tintColor property of the object with a given UIColor.
      - Parameter color: The set tint color.
      */
-    @discardableResult public func tintColored(_ color: UIColor) -> UIView {
+    @discardableResult public func tintColored(_ color: UIColor) -> Self {
         tintColor = color
         return self
     }
     
     //TODO:
-    @discardableResult public func rounded(_ radius: CGFloat) -> UIView {
+    @discardableResult public func rounded(_ radius: CGFloat) -> Self {
         layer.cornerRadius = radius
         layer.layoutIfNeeded()
         return self
@@ -105,13 +105,10 @@ extension UIView: Objectified {
      - Parameter width: The width of the rendered border.
      - Parameter color: The color of the rendered border.
      */
-    @discardableResult public func bordered(width: CGFloat, color: UIColor? = nil) -> UIView {
-        if let color = color {
-            layer.borderColor = color.cgColor
-        }
-        
+    @discardableResult public func bordered(width: CGFloat, color: UIColor? = nil) -> Self {
+        guard let color = color else { return self }
+        layer.borderColor = color.cgColor
         layer.borderWidth = width
-        
         return self
     }
     
@@ -119,7 +116,7 @@ extension UIView: Objectified {
      Sets the lineBreakMode for a UILabel or the  label of a UIButton.
      - Parameter mode: The desired specified break mode.
      */
-    @discardableResult public func setLinebreakMode(_ mode: NSLineBreakMode) -> UIView {
+    @discardableResult public func setLinebreakMode(_ mode: NSLineBreakMode) -> Self {
         if self is UILabel {
             (self as! UILabel).lineBreakMode = mode
             
@@ -137,7 +134,7 @@ extension UIView: Objectified {
      Determains whether the label's font adjusts itself according to its width for both a UILabel and the label of a UIButton. The default value is true.
      - Parameter adjusted: The desired boolean value of the set property.
      */
-    @discardableResult public func adjustedFontSizeToFitWidth(_ adjusted: Bool = true) -> UIView {
+    @discardableResult public func adjustedFontSizeToFitWidth(_ adjusted: Bool = true) -> Self {
         if self is UILabel {
             (self as! UILabel).adjustsFontSizeToFitWidth = adjusted
             
@@ -156,7 +153,7 @@ extension UIView: Objectified {
      Set the text alignemnt of a UILabel, UITexView, UITextField text or UIButton label.
      - Parameter alignment: The desired text alignment.
      */
-    @discardableResult public func setTextAlignment(_ alignment: NSTextAlignment) -> UIView {
+    @discardableResult public func setTextAlignment(_ alignment: NSTextAlignment) -> Self {
         if self is UILabel {
             (self as! UILabel).textAlignment = alignment
         } else if self is UITextView {
@@ -180,7 +177,7 @@ extension UIView: Objectified {
      - Parameter scale: The scale of the rendered image.
      - Parameter tintColor: The color with which the image is rendered.
      */
-    @discardableResult public func setSymbol(symbolName: String, pointSize: CGFloat, contentMode: UIImageView.ContentMode, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor) -> UIView {
+    @discardableResult public func setSymbol(symbolName: String, pointSize: CGFloat, contentMode: UIImageView.ContentMode, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor) -> Self {
         if self is UIImageView {
             let configuration                  = UIImage.SymbolConfiguration(pointSize: pointSize, weight: weight, scale: scale)
             let image                          = UIImage(systemName: symbolName, withConfiguration: configuration)
@@ -203,7 +200,7 @@ extension UIView: Objectified {
      Sets an image for a given image name.
      - Parameter imageName: The name of the desired image.
      */
-    @discardableResult public func setImage(imageName: String) -> UIView {
+    @discardableResult public func setImage(imageName: String) -> Self {
         if self is UIImageView {
             (self as! UIImageView).image = .init(named: imageName)
             
@@ -218,7 +215,7 @@ extension UIView: Objectified {
      Sets an image for a given image object.
      - Parameter image: The UIImage object provided.
      */
-    @discardableResult public func setImage(image: UIImage?) -> UIView {
+    @discardableResult public func setImage(image: UIImage?) -> Self {
         if let _ = self as? UIImageView {
             (self as! UIImageView).image = image
             
@@ -233,7 +230,7 @@ extension UIView: Objectified {
      Sets font as a system font for a given UILabel, UItextView, UItextField or UIButton with a given size.
      - Parameter size: The size of the rendered font.
      */
-    @discardableResult public func setSystemFont(with size: CGFloat) -> UIView {
+    @discardableResult public func setSystemFont(with size: CGFloat) -> Self {
         if let label = self as? UILabel {
             label.font = .systemFont(ofSize: size)
             
@@ -254,7 +251,7 @@ extension UIView: Objectified {
      Sets the text for a given UILabel, UITextView, UITextField, UIButton or a UISwitch.
      - Parameter text: The text to be set.
      */
-    @discardableResult public func setText(_ text: String) -> UIView {
+    @discardableResult public func setText(_ text: String) -> Self {
         if let label = self as? UILabel {
             label.text = text
             
@@ -277,7 +274,7 @@ extension UIView: Objectified {
     /**
      Sets the number of maximum lines to be rendered for a UILabel.
      */
-    @discardableResult public func setNumberOfLines(_ numberOfLines: Int) -> UIView {
+    @discardableResult public func setNumberOfLines(_ numberOfLines: Int) -> Self {
         if let label = self as? UILabel {
             label.numberOfLines = numberOfLines
         }
@@ -307,11 +304,11 @@ extension UIView: Objectified {
     @discardableResult public func animated(withDuration duration: TimeInterval,
                         andDelay delay: TimeInterval = 0,
                         withOptions options: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseOut],
-                        onMainQueue: Bool = true,
+                        onMainThread: Bool = true,
                         _ completion: @escaping AnimationComplition,
-                        _ endAnimationComplition: FinishedAnimationComplition? = nil) -> UIView {
+                        _ endAnimationComplition: FinishedAnimationComplition? = nil) -> Self {
         
-        if onMainQueue {
+        if onMainThread {
             DispatchQueue.main.async {
                 UIView.animate(withDuration: duration,
                                delay: delay,
@@ -327,8 +324,6 @@ extension UIView: Objectified {
                            completion: endAnimationComplition)
         }
         
-       
-        
         return self
     }
     
@@ -338,7 +333,7 @@ extension UIView: Objectified {
      - Parameter size: The size of the rendered font.
      - Parameter weight: The weight of the rendered font.
      */
-    @discardableResult public func fonted(ofType type: FontType, size: CGFloat, weight: UIFont.Weight = .regular) -> UIView {
+    @discardableResult public func fonted(ofType type: FontType, size: CGFloat, weight: UIFont.Weight = .regular) -> Self {
         var font = UIFont()
         
         switch type {
@@ -370,7 +365,7 @@ extension UIView: Objectified {
      A Boolean value that indicates whether the text object disables text copying and, in some cases, hides the text that the user enters (this is true by default).
      - Parameter secure: A boolean indicating whether secure text entry is active or not.
      */
-    @discardableResult public func setSecureTextEntry(_ secure: Bool = true) -> UIView {
+    @discardableResult public func setSecureTextEntry(_ secure: Bool = true) -> Self {
         if self is UITextField {
             (self as! UITextField).isSecureTextEntry = secure
         }
@@ -382,7 +377,7 @@ extension UIView: Objectified {
      Set the keyboard type to be used by the user upon editing.
      - Parameter type: The desired type of the keyboard.
      */
-    @discardableResult public func setKeyboardType(_ type: UIKeyboardType) -> UIView {
+    @discardableResult public func setKeyboardType(_ type: UIKeyboardType) -> Self {
         if self is UITextField {
             (self as! UITextField).keyboardType = type
         } else if self is UITextView {
@@ -412,7 +407,7 @@ extension UIView: Objectified {
     /**
      Determines whether subviews are confined to the bounds of the view - sets 'true' by default.
      */
-    @discardableResult public func clipsedToBounds(_ clipsed: Bool = true) -> UIView {
+    @discardableResult public func clipsedToBounds(_ clipsed: Bool = true) -> Self {
         clipsToBounds = clipsed
         return self
     }
@@ -421,7 +416,7 @@ extension UIView: Objectified {
      Sets the placeholder for a given UITextField.
      - Parameter placeholder: The placeholder text to be presented.
      */
-    @discardableResult public func setPlaceholder(_ placeholder: String) -> UIView {
+    @discardableResult public func setPlaceholder(_ placeholder: String) -> Self {
         if self is UITextField {
             (self as! UITextField).placeholder = placeholder
         }
@@ -433,7 +428,7 @@ extension UIView: Objectified {
      Corrects the text entered within a UITextField or a UITextView (this is true by default).
      - Parameter corrects: Specifies whether to correct the entered text or not.
      */
-    @discardableResult public func correctsEnteredText(_ corrects: Bool = true) -> UIView {
+    @discardableResult public func correctsEnteredText(_ corrects: Bool = true) -> Self {
         if self is UITextField {
             (self as! UITextField).autocorrectionType = corrects ? .yes : .no
         } else if self is UITextView {
@@ -448,7 +443,7 @@ extension UIView: Objectified {
      - Parameter title: The underlined text to be displayed.
      - Parameter tintColor: The color of the rendered underlined text.
      */
-    @discardableResult public func underlined(text: String, tintColor: UIColor? = nil) -> UIView {
+    @discardableResult public func underlined(text: String, tintColor: UIColor? = nil) -> Self {
         var attributes: [NSAttributedString.Key : Any] = [.underlineStyle  : NSUnderlineStyle.single.rawValue]
         if let tintColor = tintColor {
             attributes[.foregroundColor] = tintColor
@@ -510,7 +505,7 @@ extension UIView: Objectified {
     /**
      Auto capitalizes sentences (this is set to auto capitalize sentences by default).
      */
-    @discardableResult public func autoCapitilized(_ type: UITextAutocapitalizationType = .sentences) -> UIView {
+    @discardableResult public func autoCapitilized(_ type: UITextAutocapitalizationType = .sentences) -> Self {
         if self is UITextField {
             (self as! UITextField).autocapitalizationType = type
         } else if self is UITextView {
@@ -525,7 +520,7 @@ extension UIView: Objectified {
      - Parameter string: The attributed text to be displayed.
      - Parameter attributes: The attributes to be applied to the displayed text.
      */
-    @discardableResult public func attributedPlaceholder(_ string: String, attributes: [NSAttributedString.Key : Any]?) -> UIView {
+    @discardableResult public func attributedPlaceholder(_ string: String, attributes: [NSAttributedString.Key : Any]?) -> Self {
         if self is UITextField {
             (self as! UITextField).attributedPlaceholder = NSAttributedString(string: string, attributes: attributes)
         }
@@ -560,7 +555,7 @@ extension UIView: Objectified {
      
      - Parameter action: A selector identifying the action method to be called. You may specify a selector whose signature matches any of the signatures in Listing 1. This parameter must not be nil.
      */
-    @discardableResult public func targeted(_ target: Any, action: Selector) -> UIView {
+    @discardableResult public func targeted(_ target: Any, action: Selector) -> Self {
         if self is UIButton {
             (self as! UIButton).addTarget(target, action: action, for: .touchUpInside)
         } else {
@@ -571,7 +566,7 @@ extension UIView: Objectified {
         return self
     }
     
-    @discardableResult public func performs(_ action: @escaping () -> ()) -> UIView {
+    @discardableResult public func performs(_ action: @escaping () -> ()) -> Self {
         if self is UIButton {
             (self as! UIButton).addAction(action)
             
@@ -587,7 +582,7 @@ extension UIView: Objectified {
 //MARK: - Fixing views
 extension UIView {
     
-    @discardableResult public func centered(in view: UIView) -> UIView {
+    @discardableResult public func centered(in view: UIView) -> Self {
         view.addSubview(self)
         NSLayoutConstraint.activate([
             self.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -601,7 +596,7 @@ extension UIView {
                      leadingPadding:  CGFloat = 0,
                      trailingPadding: CGFloat = 0,
                      topPadding:      CGFloat = 0,
-                     bottomPadding:   CGFloat = 0) -> UIView {
+                     bottomPadding:   CGFloat = 0) -> Self {
         
         view.addSubview(self)
         NSLayoutConstraint.activate([
@@ -616,7 +611,7 @@ extension UIView {
     
     @discardableResult public func filled(in view: UIView,
                        bellow topView: UIView,
-                       withPadding padding: CGFloat = 0) -> UIView {
+                       withPadding padding: CGFloat = 0) -> Self {
         view.addSubview(self)
         NSLayoutConstraint.activate([
             self.leadingAnchor.constraint(equalTo:  view.leadingAnchor),
@@ -628,7 +623,7 @@ extension UIView {
         return self
     }
     
-    @discardableResult public func chain(with action: ChainedAction) -> UIView {
+    @discardableResult public func chain(with action: ChainedAction) -> Self {
         switch action {
         case .animation(let duration, let delay, let options, let completion, let endAnimationComplition):
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
@@ -648,7 +643,7 @@ extension UIView {
      - Parameter topColor: The color which starts at the top.
      - Parameter bottomColor: The color which continues after the top color ahs been applied.
      */
-    @discardableResult public func setGradientBackground(topColor tColor: UIColor, bottomColor bColor: UIColor) -> UIView {
+    @discardableResult public func setGradientBackground(topColor tColor: UIColor, bottomColor bColor: UIColor) -> Self {
         let gradientLayer       = CAGradientLayer()
         gradientLayer.colors    = [tColor.cgColor, bColor.cgColor]
         gradientLayer.locations = [0.0, 1.0]
