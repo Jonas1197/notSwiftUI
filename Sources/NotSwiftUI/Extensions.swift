@@ -19,6 +19,12 @@ public enum ChainedAction {
 //MARK: - Objectified methods
 extension UIView: Objectified {
     
+    static func animatedOnMainThread(withDuration duration: TimeInterval, delay: TimeInterval = 0, options: AnimationOptions, _ animations: @escaping () -> Void, completion: ((Bool) -> Void)? = nil) {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: duration, delay: delay, options: options, animations: animations, completion: completion)
+        }
+    }
+    
     /**
      Apply a shadow to effect to a the object with a given color, offest, radius and opacity.
      - Parameter color: The color of the rendered shadow effect.
