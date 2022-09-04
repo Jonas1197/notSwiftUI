@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 public typealias VoidHandler                 = ()     -> Void
 public typealias AnimationComplition         = ()     -> Void
 public typealias FinishedAnimationComplition = (Bool) -> Void
@@ -102,10 +101,17 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
                                    scaleValue scale: CGFloat,
                                    _ action: @escaping AnimationComplition) -> UIView
     func shake() -> UIView
+    
     func animated(withDuration duration: TimeInterval,
                         andDelay delay: TimeInterval,
                         withOptions options: UIView.AnimationOptions,
                         onMainThread: Bool,
                         _ completion: @escaping AnimationComplition,
                         _ endAnimationComplition: FinishedAnimationComplition?) -> UIView
+    
+    static func animatedOnMainThread(withDuration duration: TimeInterval,
+                              delay: TimeInterval,
+                              options: UIView.AnimationOptions,
+                              _ animations: @escaping () -> Void,
+                              completion: ((Bool) -> Void)?)
 }
