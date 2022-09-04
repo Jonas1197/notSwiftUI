@@ -16,7 +16,7 @@ public protocol Subscribable: AnyObject {
 }
 
 extension Subscribable {
-    func subscribe<P: Publisher>(to keyPath: KeyPath<Self, P>,
+    public func subscribe<P: Publisher>(to keyPath: KeyPath<Self, P>,
                                           handler: @escaping (P.Output) -> Void) where P.Failure == Never {
         self[keyPath: keyPath].sink {
             handler($0)
