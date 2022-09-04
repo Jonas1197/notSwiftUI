@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-protocol Subscribable: AnyObject {
+public protocol Subscribable: AnyObject {
     var cancellables: [AnyCancellable] { get set }
     
     func subscribe<P: Publisher>(to keyPath: KeyPath<Self, P>,
