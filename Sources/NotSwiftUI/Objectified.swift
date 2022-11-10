@@ -11,8 +11,16 @@ public typealias VoidHandler                 = ()     -> Void
 public typealias AnimationComplition         = ()     -> Void
 public typealias FinishedAnimationComplition = (Bool) -> Void
 
-public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceContainer, UIDynamicItem, UITraitEnvironment, UICoordinateSpace, UIFocusItem, UIFocusItemContainer, CALayerDelegate {
-    
+public protocol Objectified: UIResponder,
+                             NSCoding,
+                             UIAppearance,
+                             UIAppearanceContainer,
+                             UIDynamicItem,
+                             UITraitEnvironment,
+                             UICoordinateSpace,
+                             UIFocusItem,
+                             UIFocusItemContainer,
+                             CALayerDelegate {
     
     
     //MARK: - Coloring
@@ -92,7 +100,7 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     func targeted(_ target: Any, action: Selector) -> UIView
     func hidden()                                  -> UIView
     func showing()                                 -> UIView
-    
+    func userInteractable(_ enabled: Bool)         -> UIView
     
     
     //MARK: - Animations
@@ -112,6 +120,6 @@ public protocol Objectified: UIResponder, NSCoding, UIAppearance, UIAppearanceCo
     static func animatedOnMainThread(withDuration duration: TimeInterval,
                               delay: TimeInterval,
                               options: UIView.AnimationOptions,
-                              _ animations: @escaping () -> Void,
-                              completion: ((Bool) -> Void)?)
+                              _ animations: @escaping AnimationComplition,
+                              completion: (FinishedAnimationComplition)?)
 }

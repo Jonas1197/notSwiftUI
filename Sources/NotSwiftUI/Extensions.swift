@@ -81,6 +81,11 @@ extension UIView: Objectified {
         return self
     }
     
+    @discardableResult public func userInteractable(_ enabled: Bool) -> Self {
+        isUserInteractionEnabled = enabled
+        return self
+    }
+    
     /**
      Sets the backgroundColor property of the object with a given UIColor.
      - Parameter color: The set background color.
@@ -670,5 +675,18 @@ extension Array where Element == UIView {
     
     @discardableResult public func hstacked(spacing: CGFloat = 0, alignment: UIStackView.Alignment, distribution: UIStackView.Distribution) -> UIView {
         return Object.hstack(arrangedSubviews: self, spacing: spacing, alignment: alignment, distribution: distribution).create()
+    }
+}
+
+
+extension Array where Element == NSLayoutConstraint {
+    @discardableResult public func activate() -> [NSLayoutConstraint] {
+        forEach { $0.isActive = true }
+        return self
+    }
+    
+    @discardableResult public func deactivate() -> [NSLayoutConstraint] {
+        forEach { $0.isActive = false }
+        return self
     }
 }
