@@ -679,14 +679,14 @@ extension Array where Element == UIView {
 }
 
 
-extension Array where Element == NSLayoutConstraint {
-    @discardableResult public func activate() -> [NSLayoutConstraint] {
-        forEach { $0.isActive = true }
+extension Array where Element == NSLayoutConstraint? {
+    @discardableResult public func activate() -> [NSLayoutConstraint?] {
+        forEach { $0?.isActive = true }
         return self
     }
     
-    @discardableResult public func deactivate() -> [NSLayoutConstraint] {
-        forEach { $0.isActive = false }
+    @discardableResult public func deactivate() -> [NSLayoutConstraint?] {
+        forEach { $0?.isActive = false }
         return self
     }
 }
