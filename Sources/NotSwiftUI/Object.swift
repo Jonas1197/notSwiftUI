@@ -53,7 +53,8 @@ public enum Object {
     */
     case button(text:            String = "",
                 backgroundColor: UIColor,
-                tintColor:       UIColor)
+                tintColor:       UIColor,
+                titleColor:      UIColor = .white)
     
     /**
      Declare a UIButton with an image, background color and tint color. The text is by default empty as the image would cover it.
@@ -201,10 +202,11 @@ public enum Object {
             return textfield
             
         //MARK: - UIButton
-        case .button(let text, let backgroundColor, let tintColor):
+        case .button(let text, let backgroundColor, let tintColor, let titleColor):
             let button             = UIButton()
             button.backgroundColor = backgroundColor
             button.tintColor       = tintColor
+            button.setTitleColor(titleColor, for: .normal)
             button.setTitle(text, for: .normal)
             button.translatesAutoresizingMaskIntoConstraints = false
             return button

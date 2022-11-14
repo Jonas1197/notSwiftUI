@@ -104,6 +104,18 @@ extension UIView: Objectified {
         return self
     }
     
+    /**
+     Sets the title color of the UIButton.
+     - Parameter color: The color of the UIButton's label.
+     */
+    @discardableResult public func titleColor(_ color: UIColor) -> Self {
+        if self is UIButton {
+            (self as! UIButton).setTitleColor(color, for: .normal)
+        }
+        
+        return self
+    }
+    
     //TODO:
     @discardableResult public func rounded(_ radius: CGFloat) -> Self {
         layer.cornerRadius = radius
@@ -190,7 +202,12 @@ extension UIView: Objectified {
      - Parameter scale: The scale of the rendered image.
      - Parameter tintColor: The color with which the image is rendered.
      */
-    @discardableResult public func setSymbol(symbolName: String, pointSize: CGFloat, contentMode: UIImageView.ContentMode, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, tintColor: UIColor) -> Self {
+    @discardableResult public func setSymbol(symbolName: String,
+                                             pointSize: CGFloat,
+                                             contentMode: UIImageView.ContentMode,
+                                             weight: UIImage.SymbolWeight,
+                                             scale: UIImage.SymbolScale,
+                                             tintColor: UIColor) -> Self {
         if self is UIImageView {
             let configuration                  = UIImage.SymbolConfiguration(pointSize: pointSize, weight: weight, scale: scale)
             let image                          = UIImage(systemName: symbolName, withConfiguration: configuration)

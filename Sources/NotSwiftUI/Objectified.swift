@@ -28,6 +28,7 @@ public protocol Objectified: UIResponder,
                                bottomColor bColor: UIColor) -> UIView
     func backgroundColored(_ color: UIColor) -> UIView
     func tintColored(_ color: UIColor)       -> UIView
+    func titleColor(_ color: UIColor)        -> UIView
     func coloredText(_ color: UIColor)       -> UIView
     
     
@@ -61,7 +62,6 @@ public protocol Objectified: UIResponder,
     func getText()                                             -> String?
     func getPlaceholder()                                      -> String?
     func autoCapitilized(_ type: UITextAutocapitalizationType) -> UIView
-    
     func attributedPlaceholder(_ string: String,
                                attributes: [NSAttributedString.Key : Any]?) -> UIView
     func fonted(ofType type: FontType,
@@ -122,4 +122,8 @@ public protocol Objectified: UIResponder,
                               options: UIView.AnimationOptions,
                               _ animations: @escaping AnimationComplition,
                               completion: (FinishedAnimationComplition)?)
+}
+
+protocol ObjectifiedController {
+    
 }
