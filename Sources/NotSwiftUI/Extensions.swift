@@ -740,7 +740,7 @@ extension Array where Element == UIView {
     }
     
     @discardableResult public func placed(in parentView: UIView) -> [UIView] {
-        forEach { subview in
+        for subview in self {
             subview.translatesAutoresizingMaskIntoConstraints = false
             parentView.addSubview(subview)
         }
