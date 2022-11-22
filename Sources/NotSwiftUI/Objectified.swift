@@ -83,14 +83,16 @@ public protocol Objectified: UIResponder,
     
     
     //MARK: - Subviews & Constraints
+    func placed(in parentView: UIView) -> UIView
+    func constrainted( _ constraints: [NSLayoutConstraint]) -> UIView
     func centered(in view: UIView) -> UIView
     func filled(in view: UIView,
                      leadingPadding:  CGFloat,
                      trailingPadding: CGFloat,
                      topPadding:      CGFloat,
                      bottomPadding:   CGFloat) -> UIView
-    func filled(in view: UIView,
-                bellow topView: UIView,
+    func filled(in view:             UIView,
+                bellow topView:      UIView,
                 withPadding padding: CGFloat) -> UIView
   
     

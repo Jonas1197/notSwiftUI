@@ -612,6 +612,17 @@ extension UIView: Objectified {
 //MARK: - Fixing views
 extension UIView {
     
+    @discardableResult public func placed(in parentView: UIView) -> Self {
+        translatesAutoresizingMaskIntoConstraints = false
+        parentView.addSubview(self)
+        return self
+    }
+    
+    @discardableResult public func constrainted(_ constraints: [NSLayoutConstraint]) -> Self {
+        NSLayoutConstraint.activate(constraints)
+        return self
+    }
+    
     @discardableResult public func centered(in view: UIView) -> Self {
         view.addSubview(self)
         NSLayoutConstraint.activate([
