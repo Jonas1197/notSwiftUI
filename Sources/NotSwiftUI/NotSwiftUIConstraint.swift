@@ -15,13 +15,18 @@ public enum SpecifiedAnchor {
 }
 
 public struct NotSwiftUIConstraint {
-    var anchor:         SpecifiedAnchor
-    var relativeAnchor: Any?
-    var constant:       CGFloat
+    var layoutConstraint: NSLayoutConstraint?
+    var anchor:           SpecifiedAnchor
+    var relativeAnchor:   Any?
+    var constant:         CGFloat
     
-    public init(anchor: SpecifiedAnchor, relativeAnchor: Any? = nil, constant: CGFloat = 0) {
-        self.anchor     = anchor
-        self.relativeAnchor = relativeAnchor
-        self.constant   = constant
+    public init(layoutConstraint: NSLayoutConstraint? = nil,
+                anchor: SpecifiedAnchor,
+                relativeAnchor: Any? = nil,
+                constant: CGFloat = 0) {
+        self.layoutConstraint = layoutConstraint
+        self.anchor           = anchor
+        self.relativeAnchor   = relativeAnchor
+        self.constant         = constant
     }
 }

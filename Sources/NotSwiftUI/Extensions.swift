@@ -623,31 +623,36 @@ extension UIView {
         constraints.forEach { constraint in
             var nsConstraint: NSLayoutConstraint!
             
-            switch constraint.anchor {
-            case .bottom:
-                nsConstraint = bottomAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: constraint.constant)
-            case .top:
-                nsConstraint = topAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: constraint.constant)
-            case .leading:
-                nsConstraint = leadingAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutXAxisAnchor>, constant: constraint.constant)
-            case .trailing:
-                nsConstraint = trailingAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutXAxisAnchor>, constant: constraint.constant)
-            case .centerX:
-                nsConstraint = centerXAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutXAxisAnchor>, constant: constraint.constant)
-            case .centerY:
-                nsConstraint = centerYAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: constraint.constant)
-            case .width:
-                if let widthRelativeAnchor = constraint.relativeAnchor as? NSLayoutAnchor<NSLayoutDimension> {
-                    nsConstraint = widthAnchor.constraint(equalTo: widthRelativeAnchor, constant: constraint.constant)
-                } else {
-                    nsConstraint = widthAnchor.constraint(equalToConstant: constraint.constant)
-                }
+            if let layoutConstraint = constraint.layoutConstraint {
+                nsConstraint = layoutConstraint
                 
-            case .height:
-                if let heightRelativeAnchor = constraint.relativeAnchor as? NSLayoutAnchor<NSLayoutDimension> {
-                    nsConstraint = heightAnchor.constraint(equalTo: heightRelativeAnchor, constant: constraint.constant)
-                } else {
-                    nsConstraint = heightAnchor.constraint(equalToConstant: constraint.constant)
+            } else {
+                switch constraint.anchor {
+                case .bottom:
+                    nsConstraint = bottomAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: constraint.constant)
+                case .top:
+                    nsConstraint = topAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: constraint.constant)
+                case .leading:
+                    nsConstraint = leadingAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutXAxisAnchor>, constant: constraint.constant)
+                case .trailing:
+                    nsConstraint = trailingAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutXAxisAnchor>, constant: constraint.constant)
+                case .centerX:
+                    nsConstraint = centerXAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutXAxisAnchor>, constant: constraint.constant)
+                case .centerY:
+                    nsConstraint = centerYAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: constraint.constant)
+                case .width:
+                    if let widthRelativeAnchor = constraint.relativeAnchor as? NSLayoutAnchor<NSLayoutDimension> {
+                        nsConstraint = widthAnchor.constraint(equalTo: widthRelativeAnchor, constant: constraint.constant)
+                    } else {
+                        nsConstraint = widthAnchor.constraint(equalToConstant: constraint.constant)
+                    }
+                    
+                case .height:
+                    if let heightRelativeAnchor = constraint.relativeAnchor as? NSLayoutAnchor<NSLayoutDimension> {
+                        nsConstraint = heightAnchor.constraint(equalTo: heightRelativeAnchor, constant: constraint.constant)
+                    } else {
+                        nsConstraint = heightAnchor.constraint(equalToConstant: constraint.constant)
+                    }
                 }
             }
             
