@@ -636,6 +636,10 @@ extension UIView {
                 nsConstraint = centerXAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutXAxisAnchor>, constant: constraint.constant)
             case .centerY:
                 nsConstraint = centerYAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: constraint.constant)
+            case .width:
+                nsConstraint = widthAnchor.constraint(equalToConstant: constraint.constant)
+            case .height:
+                nsConstraint = heightAnchor.constraint(equalToConstant: constraint.constant)
             }
             
             nsConstraint.isActive = true

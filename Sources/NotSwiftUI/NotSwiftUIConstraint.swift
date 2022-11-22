@@ -11,14 +11,15 @@ public enum SpecifiedAnchor {
     case top, bottom
     case leading, trailing
     case centerX, centerY
+    case width, height
 }
 
 public struct NotSwiftUIConstraint {
     var anchor:         SpecifiedAnchor
-    var relativeAnchor: Any
+    var relativeAnchor: Any?
     var constant:       CGFloat
     
-    public init(anchor: SpecifiedAnchor, relativeAnchor: Any, constant: CGFloat = 0) {
+    public init(anchor: SpecifiedAnchor, relativeAnchor: Any? = nil, constant: CGFloat = 0) {
         self.anchor     = anchor
         self.relativeAnchor = relativeAnchor
         self.constant   = constant
