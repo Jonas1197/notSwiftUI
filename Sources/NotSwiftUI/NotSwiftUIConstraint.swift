@@ -18,7 +18,7 @@ public struct NotSwiftUIConstraint {
     var relativeAnchor: Any
     var constant:       CGFloat
     
-    public init(anchor: SpecifiedAnchor, relativeAnchor: Any, constant: CGFloat) {
+    public init(anchor: SpecifiedAnchor, relativeAnchor: Any, constant: CGFloat = 0) {
         self.anchor     = anchor
         self.relativeAnchor = relativeAnchor
         self.constant   = constant
