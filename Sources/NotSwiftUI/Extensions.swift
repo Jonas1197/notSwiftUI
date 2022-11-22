@@ -618,8 +618,29 @@ extension UIView {
         return self
     }
     
-    @discardableResult public func constrainted(_ constraints: [NSLayoutConstraint]) -> Self {
-        NSLayoutConstraint.activate(constraints)
+    @discardableResult public func constrainted(_ constraints: [NotSwiftUIConstraint]) -> Self {
+        
+        constraints.forEach { constraint in
+            var nsConstraint: NSLayoutConstraint!
+            
+            switch constraint.anchor {
+            case .bottom:
+                nsConstraint = bottomAnchor.constraint(equalTo: constraint.relativeTo as! NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: constraint.constant)
+            case .top:
+                nsConstraint = topAnchor.constraint(equalTo: constraint.relativeTo as! NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: constraint.constant)
+            case .leading:
+                nsConstraint = leadingAnchor.constraint(equalTo: constraint.relativeTo as! NSLayoutAnchor<NSLayoutXAxisAnchor>, constant: constraint.constant)
+            case .trailing:
+                nsConstraint = trailingAnchor.constraint(equalTo: constraint.relativeTo as! NSLayoutAnchor<NSLayoutXAxisAnchor>, constant: constraint.constant)
+            case .centerX:
+                nsConstraint = centerXAnchor.constraint(equalTo: constraint.relativeTo as! NSLayoutAnchor<NSLayoutXAxisAnchor>, constant: constraint.constant)
+            case .centerY:
+                nsConstraint = centerYAnchor.constraint(equalTo: constraint.relativeTo as! NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: constraint.constant)
+            }
+            
+            nsConstraint.isActive = true
+        }
+        
         return self
     }
     
