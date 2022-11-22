@@ -625,17 +625,17 @@ extension UIView {
             
             switch constraint.anchor {
             case .bottom:
-                nsConstraint = bottomAnchor.constraint(equalTo: constraint.relativeTo as! NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: constraint.constant)
+                nsConstraint = bottomAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: constraint.constant)
             case .top:
-                nsConstraint = topAnchor.constraint(equalTo: constraint.relativeTo as! NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: constraint.constant)
+                nsConstraint = topAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: constraint.constant)
             case .leading:
-                nsConstraint = leadingAnchor.constraint(equalTo: constraint.relativeTo as! NSLayoutAnchor<NSLayoutXAxisAnchor>, constant: constraint.constant)
+                nsConstraint = leadingAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutXAxisAnchor>, constant: constraint.constant)
             case .trailing:
-                nsConstraint = trailingAnchor.constraint(equalTo: constraint.relativeTo as! NSLayoutAnchor<NSLayoutXAxisAnchor>, constant: constraint.constant)
+                nsConstraint = trailingAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutXAxisAnchor>, constant: constraint.constant)
             case .centerX:
-                nsConstraint = centerXAnchor.constraint(equalTo: constraint.relativeTo as! NSLayoutAnchor<NSLayoutXAxisAnchor>, constant: constraint.constant)
+                nsConstraint = centerXAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutXAxisAnchor>, constant: constraint.constant)
             case .centerY:
-                nsConstraint = centerYAnchor.constraint(equalTo: constraint.relativeTo as! NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: constraint.constant)
+                nsConstraint = centerYAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: constraint.constant)
             }
             
             nsConstraint.isActive = true

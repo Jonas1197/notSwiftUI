@@ -14,7 +14,13 @@ public enum SpecifiedAnchor {
 }
 
 public struct NotSwiftUIConstraint {
-    var anchor:   SpecifiedAnchor
-    var relativeTo: NSLayoutAnchor<AnyObject>
-    var constant: CGFloat
+    var anchor:         SpecifiedAnchor
+    var relativeAnchor: Any
+    var constant:       CGFloat
+    
+    public init(anchor: SpecifiedAnchor, relativeAnchor: Any, constant: CGFloat) {
+        self.anchor     = anchor
+        self.relativeAnchor = relativeAnchor
+        self.constant   = constant
+    }
 }
