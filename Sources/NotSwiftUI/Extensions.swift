@@ -653,6 +653,8 @@ extension UIView {
                     } else {
                         nsConstraint = heightAnchor.constraint(equalToConstant: constraint.constant)
                     }
+                    
+                default: break
                 }
             }
             
