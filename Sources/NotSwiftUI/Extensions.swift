@@ -637,9 +637,18 @@ extension UIView {
             case .centerY:
                 nsConstraint = centerYAnchor.constraint(equalTo: constraint.relativeAnchor as! NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: constraint.constant)
             case .width:
-                nsConstraint = widthAnchor.constraint(equalToConstant: constraint.constant)
+                if let widthRelativeAnchor = constraint.relativeAnchor as? NSLayoutAnchor<NSLayoutDimension> {
+                    nsConstraint = widthAnchor.constraint(equalTo: widthRelativeAnchor, constant: constraint.constant)
+                } else {
+                    nsConstraint = widthAnchor.constraint(equalToConstant: constraint.constant)
+                }
+                
             case .height:
-                nsConstraint = heightAnchor.constraint(equalToConstant: constraint.constant)
+                if let heightRelativeAnchor = constraint.relativeAnchor as? NSLayoutAnchor<NSLayoutDimension> {
+                    nsConstraint = heightAnchor.constraint(equalTo: heightRelativeAnchor, constant: constraint.constant)
+                } else {
+                    nsConstraint = heightAnchor.constraint(equalToConstant: constraint.constant)
+                }
             }
             
             nsConstraint.isActive = true
