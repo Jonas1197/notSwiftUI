@@ -256,6 +256,26 @@ extension UIView: Objectified {
         return self
     }
     
+    public func setInsets(forContentPadding contentPadding: UIEdgeInsets, imageTitlePadding: CGFloat) -> UIView {
+        guard let _ = self as? UIButton else { return self }
+        
+        (self as! UIButton).contentEdgeInsets = UIEdgeInsets(
+            top: contentPadding.top,
+            left: contentPadding.left,
+            bottom: contentPadding.bottom,
+            right: contentPadding.right + imageTitlePadding
+        )
+        
+        (self as! UIButton).titleEdgeInsets = UIEdgeInsets(
+            top: 0,
+            left: imageTitlePadding,
+            bottom: 0,
+            right: -imageTitlePadding
+        )
+        
+        return self
+    }
+    
     /**
      Sets font as a system font for a given UILabel, UItextView, UItextField or UIButton with a given size.
      - Parameter size: The size of the rendered font.

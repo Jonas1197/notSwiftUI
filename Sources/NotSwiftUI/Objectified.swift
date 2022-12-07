@@ -79,6 +79,7 @@ public protocol Objectified: UIResponder,
                    tintColor: UIColor) -> UIView
     func setImage(imageName: String)   -> UIView
     func setImage(image: UIImage?)     -> UIView
+    func setInsets(forContentPadding contentPadding: UIEdgeInsets, imageTitlePadding: CGFloat) -> UIView
     
     
     
