@@ -32,29 +32,34 @@ public enum Object {
      - Parameter text: The text to be displayed on the label.
      - Parameter textAlignment: The alignment of the displayed text.
      - Parameter textColor: The color of the text.
-    */
-    case label(text:            String,
-               textAlignment:   NSTextAlignment,
-               backgroundColor: UIColor = .clear,
-               textColor:       UIColor)
+     */
+    case label(
+        text: String,
+        textAlignment: NSTextAlignment,
+        backgroundColor: UIColor = .clear,
+        textColor: UIColor
+    )
     
-    case textfield(text:              String = "",
-                   placeholder:       String = "",
-                   borderStyle:       UITextField.BorderStyle = .roundedRect,
-                   keyboardType:      UIKeyboardType,
-                   textAlignment:     NSTextAlignment = .natural,
-                   isSecureTextEntry: Bool = false)
+    case textfield(
+        text: String = "",
+        placeholder: String = "",
+        borderStyle: UITextField.BorderStyle = .roundedRect,
+        keyboardType: UIKeyboardType,
+        textAlignment: NSTextAlignment = .natural,
+        isSecureTextEntry: Bool = false
+    )
     
     /**
      Declare a UIButton with a title, background color and tint color.
      - Parameter text: The text to be displayed on the button's label.
      - Parameter backgroundColor: The background color of the button.
      - Parameter tintColor: The tint color of the button.
-    */
-    case button(text:            String = "",
-                backgroundColor: UIColor,
-                tintColor:       UIColor,
-                titleColor:      UIColor = .white)
+     */
+    case button(
+        text: String = "",
+        backgroundColor: UIColor,
+        tintColor: UIColor,
+        titleColor: UIColor = .white)
     
     /**
      Declare a UIButton with an image, background color and tint color. The text is by default empty as the image would cover it.
@@ -63,10 +68,12 @@ public enum Object {
      - Parameter backgroundColor: The background color of the button.
      - Parameter tintColor: The tint color of the button.
      */
-    case buttonWithImage(image:           UIImage?,
-                         text:            String = "",
-                         backgroundColor: UIColor,
-                         tintColor:       UIColor)
+    case buttonWithImage(
+        image: UIImage?,
+        text: String = "",
+        backgroundColor: UIColor,
+        tintColor: UIColor
+    )
     
     /**
      Declare a button with an SFSymbol's name, a point size, weight and scale. The title of the button would by default be empty. Tint color as well as background color are by defauly white and clear respectively.
@@ -77,13 +84,15 @@ public enum Object {
      - Parameter tintColor: The tint color of the displayed SFSymbol. This is set to white if not specified otherwise.
      - Parameter backgroundColor: The background color of the UIButton. This is set to clear if not specified otherwise.
      */
-    case buttonWithSymbol(title:           String = "",
-                          symbolName:      String,
-                          pointSize:       CGFloat,
-                          weight:          UIImage.SymbolWeight,
-                          scale:           UIImage.SymbolScale,
-                          tintColor:       UIColor = .white,
-                          backgroundColor: UIColor = .clear)
+    case buttonWithSymbol(
+        title: String = "",
+        symbolName:String,
+        pointSize: CGFloat,
+        weight: UIImage.SymbolWeight,
+        scale: UIImage.SymbolScale,
+        tintColor: UIColor = .white,
+        backgroundColor: UIColor = .clear
+    )
     
     /**
      Delcare a UISwitch with a title, target and a selector.
@@ -91,8 +100,10 @@ public enum Object {
      - Parameter target: The target of the UISwitch.
      - Parameter action: The action to be fired once the UISwitch's value has changed.
      */
-    case switchElement(target: Any,
-                       action: Selector)
+    case switchElement(
+        target: Any,
+        action: Selector
+    )
     
     /**
      Delcare a UIStackView with a horizontal axis from an array of UIViews, with spacing between each view, alignment and distribution.
@@ -101,10 +112,12 @@ public enum Object {
      - Parameter alignment: The alignment of the stacked views.
      - Parameter distribution: Teh distribution of the stacked views.
      */
-    case hstack(arrangedSubviews: [UIView],
-                spacing:          CGFloat,
-                alignment:        UIStackView.Alignment,
-                distribution:     UIStackView.Distribution)
+    case hstack(
+        arrangedSubviews: [UIView],
+        spacing: CGFloat,
+        alignment: UIStackView.Alignment,
+        distribution: UIStackView.Distribution
+    )
     
     /**
      Delcare a UIStackView with a vertical axis from an array of UIViews, with spacing between each view, alignment and distribution.
@@ -113,10 +126,12 @@ public enum Object {
      - Parameter alignment: The alignment of the stacked views.
      - Parameter distribution: Teh distribution of the stacked views.
      */
-    case vstack(arrangedSubviews: [UIView],
-                spacing:          CGFloat,
-                alignment:        UIStackView.Alignment,
-                distribution:     UIStackView.Distribution)
+    case vstack(
+        arrangedSubviews: [UIView],
+        spacing: CGFloat,
+        alignment: UIStackView.Alignment,
+        distribution: UIStackView.Distribution
+    )
     
     /**
      Declare a UIImageView with an image and content mode. Background color will be by default clear if not specified otherwise.
@@ -124,10 +139,11 @@ public enum Object {
      - Parameter cotentMode: The content mode of the displayed image within the UIImageView.
      - Parameter backgroundColor: The background color of the UIImageView. If not specifically specified this will be set to clear.
      */
-    case imageViewWithImage(image:           UIImage?,
-                            contentMode:     UIImageView.ContentMode,
-                            backgroundColor: UIColor = .clear)
-    
+    case imageViewWithImage(
+        image: UIImage?,
+        contentMode: UIImageView.ContentMode,
+        backgroundColor: UIColor = .clear
+    )
     
     /**
      Declare a UIImageView with an SFSymbol's name, its pointSize, content mode, symbol weight, symbol scale and tint color.
@@ -138,12 +154,14 @@ public enum Object {
      - Parameter scale: The symbol scale of the displayed SFSymbol.
      - Parameter tintColor: The tint color of the displayed SFSymbol.
      */
-    case imageViewWithSFSymbol(symbolName:  String,
-                               pointSize:   CGFloat,
-                               contentMode: UIImageView.ContentMode,
-                               weight:      UIImage.SymbolWeight,
-                               scale:       UIImage.SymbolScale,
-                               tintColor:   UIColor)
+    case imageViewWithSFSymbol(
+        symbolName: String,
+        pointSize: CGFloat,
+        contentMode: UIImageView.ContentMode,
+        weight: UIImage.SymbolWeight,
+        scale: UIImage.SymbolScale,
+        tintColor: UIColor
+    )
     
     //MARK: - Shape
     
@@ -153,17 +171,21 @@ public enum Object {
      - Parameter width: The width of the declared rectangle.
      - Parameter height: The height of the declared rectangle.
      */
-    case rectangle(color: UIColor = .black,
-                width:    Double,
-                height:   Double)
+    case rectangle(
+        color: UIColor = .black,
+        width: Double,
+        height: Double
+    )
     
     /**
      Declare a UIView with a specific color and diameter, which will be rendered as a circle.
      - Parameter color: The color the declared circle.
      - Parameter size: The diameter of the declared circle.
      */
-    case circle(color: UIColor = .black,
-                size:  Double)
+    case circle(
+        color: UIColor = .black,
+        size: Double
+    )
     
     /**
      The create method required to be invoked after choosing an object to declare. This method will create the elemnt of the specified object and will return it as a UIView.
@@ -172,100 +194,164 @@ public enum Object {
         switch self {
             
             
-        //MARK: - UIKit
+            //MARK: - UIKit
         case .view(let backgroundColor):
-            let view             = UIView()
+            let view = UIView()
             view.backgroundColor = backgroundColor
             view.translatesAutoresizingMaskIntoConstraints = false
             return view
             
             
-        //MARK: - UILabel
-        case .label(let text, let textAlignment, let backgroundColor, let textColor):
-            let label             = UILabel()
-            label.text            = text
+            //MARK: - UILabel
+        case .label(
+            let text,
+            let textAlignment,
+            let backgroundColor,
+            let textColor
+        ):
+            let label = UILabel()
+            label.text = text
             label.backgroundColor = backgroundColor
-            label.textColor       = textColor
-            label.textAlignment   = textAlignment
+            label.textColor = textColor
+            label.textAlignment = textAlignment
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
             
-        case .textfield(let text, let placeholder, let borderStyle, let keyboardType, let textAlignment, let secureTextEntry):
-            let textfield               = UITextField()
-            textfield.text              = text
-            textfield.placeholder       = placeholder
-            textfield.borderStyle       = borderStyle
-            textfield.keyboardType      = keyboardType
-            textfield.textAlignment     = textAlignment
+        case .textfield(
+            let text,
+            let placeholder,
+            let borderStyle,
+            let keyboardType,
+            let textAlignment,
+            let secureTextEntry
+        ):
+            let textfield = UITextField()
+            textfield.text = text
+            textfield.placeholder = placeholder
+            textfield.borderStyle = borderStyle
+            textfield.keyboardType = keyboardType
+            textfield.textAlignment = textAlignment
             textfield.isSecureTextEntry = secureTextEntry
             textfield.translatesAutoresizingMaskIntoConstraints = false
             return textfield
             
-        //MARK: - UIButton
-        case .button(let text, let backgroundColor, let tintColor, let titleColor):
-            let button             = UIButton()
+            //MARK: - UIButton
+        case .button(
+            let text,
+            let backgroundColor,
+            let tintColor,
+            let titleColor
+        ):
+            let button = UIButton()
             button.backgroundColor = backgroundColor
-            button.tintColor       = tintColor
+            button.tintColor = tintColor
             button.setTitleColor(titleColor, for: .normal)
             button.setTitle(text, for: .normal)
             button.translatesAutoresizingMaskIntoConstraints = false
             return button
             
-        case .buttonWithImage(let image, let text, let backgroundColor, let tintColor):
-            let button             = UIButton()
+        case .buttonWithImage(
+            let image,
+            let text,
+            let backgroundColor,
+            let tintColor
+        ):
+            let button = UIButton()
             button.backgroundColor = backgroundColor
-            button.tintColor       = tintColor
+            button.tintColor = tintColor
             button.setTitle(text, for: .normal)
             button.setImage(image, for: .normal)
             button.translatesAutoresizingMaskIntoConstraints = false
             return button
             
-        case .buttonWithSymbol(let title, let symbolName, let pointSize, let weight, let scale, let tintColor, let backgroundColor):
-            let button             = UIButton()
-            let configuration      = UIImage.SymbolConfiguration(pointSize: pointSize, weight: weight, scale: scale)
-            let image              = UIImage(systemName: symbolName, withConfiguration: configuration)
-            button.tintColor       = tintColor
+        case .buttonWithSymbol(
+            let title,
+            let symbolName,
+            let pointSize,
+            let weight,
+            let scale,
+            let tintColor,
+            let backgroundColor
+        ):
+            let button = UIButton()
+            
+            let configuration = UIImage.SymbolConfiguration(
+                pointSize: pointSize,
+                weight: weight,
+                scale: scale
+            )
+            
+            let image = UIImage(
+                systemName: symbolName,
+                withConfiguration: configuration
+            )
+            
+            button.tintColor = tintColor
             button.backgroundColor = backgroundColor
             button.setImage(image, for: .normal)
             button.setTitle(title, for: .normal)
             button.translatesAutoresizingMaskIntoConstraints = false
             return button
             
-        case .switchElement(let target, let action):
+        case .switchElement(
+            let target,
+            let action
+        ):
             let switchElement = UISwitch()
-            switchElement.addTarget(target, action: action, for: .valueChanged)
+            
+            switchElement.addTarget(
+                target,
+                action: action,
+                for: .valueChanged
+            )
+            
             switchElement.translatesAutoresizingMaskIntoConstraints = false
             return switchElement
             
-        case .hstack(let arrangedSubviews, let spacing, let alignment, let distribution):
+        case .hstack(
+            let arrangedSubviews,
+            let spacing,
+            let alignment,
+            let distribution
+        ):
             let stackView = UIStackView()
             for subview in arrangedSubviews {
                 stackView.addArrangedSubview(subview)
             }
             
             stackView.distribution = distribution
-            stackView.alignment    = alignment
-            stackView.axis         = .horizontal
-            stackView.spacing      = spacing
+            stackView.alignment = alignment
+            stackView.axis = .horizontal
+            stackView.spacing = spacing
             stackView.translatesAutoresizingMaskIntoConstraints = false
             return stackView
             
-        case .vstack(let arrangedSubviews, let spacing, let alignment, let distribution):
+        case .vstack(
+            let arrangedSubviews,
+            let spacing,
+            let alignment,
+            let distribution
+        ):
             let stackView = UIStackView()
             for subview in arrangedSubviews {
                 stackView.addArrangedSubview(subview)
             }
             
             stackView.distribution = distribution
-            stackView.alignment    = alignment
-            stackView.axis         = .vertical
-            stackView.spacing      = spacing
+            stackView.alignment = alignment
+            stackView.axis = .vertical
+            stackView.spacing = spacing
             stackView.translatesAutoresizingMaskIntoConstraints = false
             return stackView
             
-        //MARK: - Shape
-        case .rectangle(let color, let width, let height):
+            //MARK: - Shape
+        case .rectangle(
+            let color,
+            let width,
+            let height
+        ):
             let view = UIView()
+            
             NSLayoutConstraint.activate([
                 view.widthAnchor.constraint(equalToConstant: width),
                 view.heightAnchor.constraint(equalToConstant: height)
@@ -275,8 +361,12 @@ public enum Object {
             view.translatesAutoresizingMaskIntoConstraints = false
             return view
             
-        case .circle(let color, let size):
+        case .circle(
+            let color,
+            let size
+        ):
             let view = UIView()
+            
             NSLayoutConstraint.activate([
                 view.widthAnchor.constraint(equalToConstant: size),
                 view.heightAnchor.constraint(equalToConstant: size)
@@ -286,18 +376,39 @@ public enum Object {
             view.translatesAutoresizingMaskIntoConstraints = false
             return view.rounded(size / 2)
             
-        case .imageViewWithImage(let image, let contentMode, let backgroundColor):
-            let imageView             = UIImageView(image: image)
-            imageView.contentMode     = contentMode
+        case .imageViewWithImage(
+            let image,
+            let contentMode,
+            let backgroundColor
+        ):
+            let imageView = UIImageView(image: image)
+            imageView.contentMode = contentMode
             imageView.backgroundColor = backgroundColor
             imageView.translatesAutoresizingMaskIntoConstraints = false
             return imageView
             
-        case .imageViewWithSFSymbol(let symbolName, let pointSize, let contentMode, let weight, let scale, let tintColor):
-            let imageView         = UIImageView()
-            let configuration     = UIImage.SymbolConfiguration(pointSize: pointSize, weight: weight, scale: scale)
-            let image             = UIImage(systemName: symbolName, withConfiguration: configuration)
-            imageView.image       = image
+        case .imageViewWithSFSymbol(
+            let symbolName,
+            let pointSize,
+            let contentMode,
+            let weight,
+            let scale,
+            let tintColor
+        ):
+            let imageView = UIImageView()
+            
+            let configuration = UIImage.SymbolConfiguration(
+                pointSize: pointSize,
+                weight: weight,
+                scale: scale
+            )
+            
+            let image = UIImage(
+                systemName: symbolName,
+                withConfiguration: configuration
+            )
+            
+            imageView.image   = image
             imageView.tintColor   = tintColor
             imageView.contentMode = contentMode
             imageView.translatesAutoresizingMaskIntoConstraints = false
